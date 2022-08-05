@@ -1,3 +1,8 @@
+{{-- @extends('layouts.base') --}}
+@section('title', 'Home Page')
+@section('loading')
+    @include('livewire.loading-component')
+@endsection
 <main id="main">
     <div class="container">
 

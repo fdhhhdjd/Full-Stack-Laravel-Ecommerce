@@ -5,7 +5,9 @@
         <div class="wrap-breadcrumb">
             <ul>
                 <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>Digital & Electronics</span></li>
+                <li class="item-link"><span>Product Category</span></li>
+                <li class="item-link"><span>{{ $category_name }}</span></li>
+
             </ul>
         </div>
         <div class="row">
@@ -20,7 +22,7 @@
 
                 <div class="wrap-shop-control">
 
-                    <h1 class="shop-title">Digital & Electronics</h1>
+                    <h1 class="shop-title">{{ $category_name }}</h1>
 
                     <div class="wrap-right">
 
@@ -58,28 +60,36 @@
                 <div class="row">
 
                     <ul class="product-list grid-products equal-container">
-                        @foreach ($products as $product)
-                            <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-                                <div class="product product-style-3 equal-elem ">
-                                    <div class="product-thumnail">
-                                        <a href="{{ route('product.details', ['slug' => $product->slug]) }}"
-                                            title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                            <figure><img
-                                                    src="{{ asset('assets/images/products') }}/{{ $product->image }}"
-                                                    alt={{ $product->name }}></figure>
-                                        </a>
+                        @if (count($products) > 0)
+                            @foreach ($products as $product)
+                                <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+                                    <div class="product product-style-3 equal-elem ">
+                                        <div class="product-thumnail">
+                                            <a href="{{ route('product.details', ['slug' => $product->slug]) }}"
+                                                title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                                                <figure><img class="lazy"
+                                                        src="{{ asset('assets/images/default.jpg') }}"
+                                                        data-src="{{ asset('assets/images/products') }}/{{ $product->image }}"
+                                                        alt={{ $product->name }}></figure>
+                                            </a>
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="#" class="product-name"><span>{{ $product->name }}</span></a>
+                                            <div class="wrap-price"><span
+                                                    class="product-price">{{ $product->regular_price }}</span></div>
+                                            <a href="#" class="btn add-to-cart"
+                                                wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}',{{ $product->regular_price }})">AddTo
+                                                Cart</a>
+                                        </div>
                                     </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>{{ $product->name }}</span></a>
-                                        <div class="wrap-price"><span
-                                                class="product-price">{{ $product->regular_price }}</span></div>
-                                        <a href="#" class="btn add-to-cart"
-                                            wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}',{{ $product->regular_price }})">AddTo
-                                            Cart</a>
-                                    </div>
-                                </div>
+                                </li>
+                            @endforeach
+                        @else
+                            <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+                                <h1 style="padding-top:30px;color:red">No Products</h1>
                             </li>
-                        @endforeach
+                        @endif
+
                     </ul>
                 </div>
 

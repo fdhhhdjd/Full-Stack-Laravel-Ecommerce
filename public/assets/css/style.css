@@ -7204,3 +7204,25 @@ svg{
 .wrap-pagination-info .rounded-r-md{
     margin-left: 5px;
 }
+
+/* lazy loading */
+img:not([src]) {
+    visibility: hidden;
+  }
+
+  /* Fixes Firefox anomaly during image load */
+  @-moz-document url-prefix() {
+    img:-moz-loading {
+      visibility: hidden;
+    }
+  }
+  .lazy{
+    object-fit: cover;
+    transform:scale(0.7);
+    transition:0.5s ease-in-out;
+  }
+
+  .lazy.lz-applied{
+    transform: scale(1);
+    
+  }

@@ -1,3 +1,7 @@
+@section('title', 'Cart')
+@section('loading')
+    @include('livewire.loading-component')
+@endsection
 <main id="main" class="main-site">
 
     <div class="container">

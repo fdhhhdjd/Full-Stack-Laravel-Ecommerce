@@ -1,3 +1,8 @@
+@section('title', $product->name)
+@section('title', 'About')
+@section('loading')
+    @include('livewire.loading-component')
+@endsection
 <main id="main" class="main-site">
 
     <div class="container">
@@ -17,7 +22,8 @@
                             <ul class="slides">
 
                                 <li data-thumb="{{ asset('assets/images/products') }}/{{ $product->image }}">
-                                    <img src="{{ asset('assets/images/products') }}/{{ $product->image }}"
+                                    <img class="lazy" src="{{ asset('assets/images/default.jpg') }}"
+                                        data-src="{{ asset('assets/images/products') }}/{{ $product->image }}"
                                         alt="{{ $product->name }}" />
                                 </li>
 
