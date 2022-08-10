@@ -1,3 +1,7 @@
+@section('title', 'Category')
+@section('loading')
+    @include('livewire.loading-component')
+@endsection
 <div>
     <style>
         nav svg {
@@ -32,6 +36,7 @@
                                 {{ Session::get('message') }}
                             </div>
                         @endif
+
                         <table class="table table-striped ">
                             <thead>
                                 <tr>
@@ -51,7 +56,8 @@
                                             <a href="{{ route('admin.editcategory', ['category_slug' => $category->slug]) }}"
                                                 style="margin-right:1rem">
                                                 <i class="fa fa-edit fa-2x"></i></a>
-                                            <a href="#" wire:click="deleteCategory({{ $category->id }})">
+                                            <a href="{{ route('admin.deletecategory', ['id' => $category->id]) }}"
+                                                onclick="return confirm('Are you sure?')">
                                                 <i class="fa fa-times fa-2x text-danger"></i></a>
                                         </td>
                                     </tr>
@@ -65,3 +71,4 @@
         </div>
     </div>
 </div>
+{{-- wire:click="deleteCategory({{ $category->id }})" --}}

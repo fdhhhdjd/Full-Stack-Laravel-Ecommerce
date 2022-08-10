@@ -54,10 +54,38 @@
 
                 </div>
                 <!--end wrap shop control-->
+                <style>
+                    .product-wish {
+                        position: absolute;
+                        top: 10%;
+                        left: 0;
+                        z-index: 99;
+                        right: 30px;
+                        text-align: right;
+                        padding-top: 0
+                    }
 
+                    .product-wish .fa {
+                        color: #cbcbcb;
+                        font-size: 32px;
+                    }
+
+                    .product-wish .fa:hover {
+                        color: #ff7007;
+                    }
+
+                    .fill-heart {
+                        color: #ff7007 !important;
+                    }
+                </style>
                 <div class="row">
 
                     <ul class="product-list grid-products equal-container">
+                        @php
+                            $witems = Cart::instance('wishlist')
+                                ->content()
+                                ->pluck('id');
+                        @endphp
                         @foreach ($products as $product)
                             <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
                                 <div class="product product-style-3 equal-elem ">
@@ -76,6 +104,20 @@
                                         <a href="#" class="btn add-to-cart"
                                             wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}',{{ $product->regular_price }})">AddTo
                                             Cart</a>
+                                        <div class="product-wish">
+                                            @if ($witems->contains($product->id))
+                                                <a href="#"
+                                                    wire:click.prevent="removeToWishlist({{ $product->id }})">
+                                                    <i class="fa fa-heart fill-heart"></i>
+                                                </a>
+                                            @else
+                                                <a href="#"
+                                                    wire:click.prevent="addToWishlist({{ $product->id }}, '{{ $product->name }}',{{ $product->regular_price }})">
+                                                    <i class="fa fa-heart"></i>
+                                                </a>
+                                            @endif
+
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -84,14 +126,14 @@
                 </div>
 
                 <div class="wrap-pagination-info">
-                    {{ $products->links() }}
+                    {{ $products->links('components.panigation') }}
                     {{-- <ul class="page-numbers">
                         <li><span class="page-number-item current">1</span></li>
                         <li><a class="page-number-item" href="#">2</a></li>
                         <li><a class="page-number-item" href="#">3</a></li>
                         <li><a class="page-number-item next-link" href="#">Next</a></li>
                     </ul> --}}
-                    {{-- <p class="result-count">Showing 1-8 of 12 result</p> --}}
+                    {{-- {{-- <p class="result-count">Showing 1-8 of 12 result</p> --}}
                 </div>
             </div>
             <!--end main products area-->
@@ -141,14 +183,13 @@
                 </div><!-- brand widget-->
 
                 <div class="widget mercado-widget filter-widget price-filter">
-                    <h2 class="widget-title">Price</h2>
-                    <div class="widget-content">
-                        <div id="slider-range"></div>
-                        <p>
-                            <label for="amount">Price:</label>
-                            <input type="text" id="amount" readonly>
-                            <button class="filter-submit">Filter</button>
-                        </p>
+                    <h2 class="widget-title">Price
+                        <span class="text-info">
+                            {{ $min_price }}-{{ $max_price }}
+                        </span>
+                    </h2>
+                    <div class="widget-content" style="padding:10px 5px 40px 5px;">
+                        <div id="slider" wire:ignore></div>
                     </div>
                 </div><!-- Price-->
 
@@ -200,3 +241,26 @@
     <!--end container-->
 
 </main>
+@push('scripts')
+    <script>
+        var slider = document.getElementById('slider');
+        noUiSlider.create(slider, {
+            start: [1, 1000],
+            connect: true,
+            range: {
+                'min': 1,
+                'max': 1000
+            },
+            pips: {
+                mode: 'steps',
+                stepped: true,
+                density: 4
+            }
+        })
+
+        slider.noUiSlider.on('update', function(value) {
+            @this.set('min_price', value[0]);
+            @this.set('max_price', value[1]);
+        })
+    </script>
+@endpush

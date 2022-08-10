@@ -44,7 +44,8 @@ class SearchComponent extends Component
             $products = Products::where('name', 'like', '%' . $this->search . '%')->where('category_id', 'like', '%' . $this->product_cat_id . '%')->paginate($this->pagesize);
         }
         $categories = Category::all();
-        $popular_products = Products::inRandomOrder()->limit(4)->get();
+        $popular_products = Products::where('featured', 1)->limit(4)->get();
+
         return view('livewire.search-component', ['products' => $products, 'popular_products' => $popular_products, "categories", "categories" => $categories])->layout('layouts.base');
     }
 }

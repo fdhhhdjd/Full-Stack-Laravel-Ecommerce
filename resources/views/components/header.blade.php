@@ -62,8 +62,29 @@
                                                     <a href="{{ route('admin.dashboard') }}" title="Dashboard">Dashboard</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a href="{{ route('admin.categories') }}"
-                                                        title="Dashboard">Categories</a>
+                                                    <a href="{{ route('admin.categories') }}" title="Category">Manager
+                                                        Categories</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="{{ route('admin.products') }}" title="Product">Manager
+                                                        Products</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="{{ route('admin.homeslider') }}" title="Slider">Manager
+                                                        Slider</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="{{ route('admin.homecategories') }}"
+                                                        title="Home Category">Manager
+                                                        Home Category</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="{{ route('admin.coupons') }}" title="Coupons">Manager
+                                                        Coupons</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="{{ route('admin.sale') }}" title="Dashboard">
+                                                        Sale Settings</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a href="{{ route('logout') }}" title="logout"
@@ -83,7 +104,11 @@
                                             </a>
                                             <ul class="submenu curency">
                                                 <li class="menu-item">
-                                                    <a href="{{ route('user.dashboard') }}" title="Dashboard">Dashboard</a>
+                                                    <a href="{{ route('user.dashboard') }}"
+                                                        title="Dashboard">Dashboard</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="{{ route('user.profile') }}" title="Dashboard">Profile</a>
                                                 </li>
 
                                                 <li class="menu-item">
@@ -123,27 +148,12 @@
 
 
                         <div class="wrap-icon right-section">
-                            <div class="wrap-icon-section wishlist">
-                                <a href="#" class="link-direction">
-                                    <i class="fa fa-heart" aria-hidden="true"></i>
-                                    <div class="left-info">
-                                        <span class="index">0 item</span>
-                                        <span class="title">Wishlist</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="wrap-icon-section minicart">
-                                <a href="/cart" class="link-direction">
-                                    <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                    <div class="left-info">
-                                        @if (Cart::count() > 0)
-                                            <span class="index">{{ Cart::count() }}</span>
-                                        @elseif (Cart::count() <= 0)
-                                            <span class="index">0</span>
-                                        @endif
-                                    </div>
-                                </a>
-                            </div>
+                            {{-- wishlist --}}
+                            @livewire('wishlist-count-component')
+                            {{-- Cart --}}
+                            @livewire('cart-count-component')
+
+
                             <div class="wrap-icon-section show-up-after-1024">
                                 <a href="#" class="mobile-navigation">
                                     <span></span>
