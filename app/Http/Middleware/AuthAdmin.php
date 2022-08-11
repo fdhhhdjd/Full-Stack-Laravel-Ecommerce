@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
@@ -18,12 +19,11 @@ class AuthAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        // if (session('utype') === "ADM") {
-        if (Auth::user()->utype === 'ADM') {
-            return $next($request);
-        } else {
-            session()->flush();
-            return redirect()->route('login');
+        if (Auth::user()->utype === "ADM") {
+            session(['utype' => 'ADM']);
+        } else if (Auth::user()->utype == "USR") {
+            session(['utype' => 'ADM']);
+            return redirect(RouteServiceProvider::HOME);
         }
         return $next($request);
     }

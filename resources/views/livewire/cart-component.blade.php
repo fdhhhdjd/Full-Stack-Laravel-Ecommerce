@@ -67,7 +67,11 @@
                         @endforeach
                     </ul>
                 @else
-                    <h1 style="color: red; ">No item Cart</h1>
+                    <div class="text-center" style="padding:30px 0;">
+                        <h1>Your cart is empty</h1>
+                        <p>Add Item to it now</p>
+                        <a href="/shop" class="btn btn-success">Shop Now</a>
+                    </div>
                 @endif
             </div>
 
@@ -125,7 +129,7 @@
                             </div>
                         @endif
                     @endif
-                    <a class="btn btn-checkout" href="checkout.html">Check out</a>
+                    <a class="btn btn-checkout" href="#" wire:click.prevent="checkout">Check out</a>
                     <a class="link-to-shop" href="/shop">Continue Shopping<i class="fa fa-arrow-circle-right"
                             aria-hidden="true"></i></a>
                 </div>

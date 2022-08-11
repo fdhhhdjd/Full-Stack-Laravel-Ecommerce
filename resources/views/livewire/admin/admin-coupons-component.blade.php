@@ -45,6 +45,7 @@
                                     <th>Coupons Type</th>
                                     <th>Coupons Value</th>
                                     <th>Cart Value</th>
+                                    <th>Expiry Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -60,6 +61,7 @@
                                         @endif
                                         <td>{{ $coupon->value }}</td>
                                         <td>{{ $coupon->cart_value }}</td>
+                                        <td>{{ $coupon->expiry_date }}</td>
                                         <td>
                                             <a href="{{ route('admin.editcoupons', ['coupon_id' => $coupon->id]) }}"
                                                 style="margin-right:1rem">

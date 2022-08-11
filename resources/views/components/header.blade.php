@@ -83,6 +83,10 @@
                                                         Coupons</a>
                                                 </li>
                                                 <li class="menu-item">
+                                                    <a href="{{ route('admin.orders') }}" title="Orders">Manager
+                                                        Orders</a>
+                                                </li>
+                                                <li class="menu-item">
                                                     <a href="{{ route('admin.sale') }}" title="Dashboard">
                                                         Sale Settings</a>
                                                 </li>
@@ -108,7 +112,14 @@
                                                         title="Dashboard">Dashboard</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a href="{{ route('user.profile') }}" title="Dashboard">Profile</a>
+                                                    <a href="{{ route('user.profile') }}" title="Profile">Profile</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="{{ route('user.orders') }}" title="Orders">Orders</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="{{ route('user.changepassword') }}"
+                                                        title="Change Password">Change Password</a>
                                                 </li>
 
                                                 <li class="menu-item">

@@ -8,15 +8,16 @@ use App\Models\HomeSlider;
 use App\Models\Products;
 use App\Models\Sale;
 use Livewire\Component;
+use Illuminate\Support\Facades\Redis;
 
 class HomeComponent extends Component
 {
+
     public function render()
     {
         $sliders = HomeSlider::where('status', 1)->get();
         //Show Latest Products On Homepage
         $lproducts = Products::orderBy('created_at', 'DESC')->get()->take(8);
-
         //Admin Show Product Categories On Homepage
         $category = HomeCategory::find(1);
         $cats = explode(',', $category->sel_categories);

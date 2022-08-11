@@ -9,13 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "cartalyst/stripe-laravel": "^14.0",
         "guzzlehttp/guzzle": "^7.2",
         "hardevine/shoppingcart": "^3.1",
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.10",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.5"
+        "livewire/livewire": "^2.5",
+        "predis/predis": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

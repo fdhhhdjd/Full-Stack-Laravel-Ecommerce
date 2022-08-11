@@ -13,6 +13,8 @@ use App\Http\Livewire\Admin\AdminEditCouponsComponent;
 use App\Http\Livewire\Admin\AdminEditProductComponent;
 use App\Http\Livewire\Admin\AdminHomeCategoryComponent;
 use App\Http\Livewire\Admin\AdminHomeSliderComponent;
+use App\Http\Livewire\Admin\AdminOrderComponent;
+use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
 use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\Admin\AdminSaleComponent;
 use App\Http\Livewire\Admin\EditHomeSliderComponent;
@@ -23,8 +25,13 @@ use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\ShopComponent;
+use App\Http\Livewire\ThankyouComponent;
+use App\Http\Livewire\User\UserChangePasswordComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Livewire\User\UserOrderDetailsComponent;
+use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserProfileComponent;
+use App\Http\Livewire\User\UserReviewComponent;
 use App\Http\Livewire\WishlistComponent;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +70,13 @@ Route::get('/search', SearchComponent::class)->name('product.search');
 
 Route::get('/wishlist', WishlistComponent::class)->name('product.wishlist');
 
+//checkout
+Route::get("/user/checkout", CheckoutComponent::class)->name('order.checkout');
+
+//Thank You Checkout Success
+Route::get("/user/thank", ThankyouComponent::class)->name('checkout.thankyou');
+
+
 
 //for user
 Route::middleware([
@@ -74,6 +88,16 @@ Route::middleware([
 
     //profile
     Route::get("/user/profile", UserProfileComponent::class)->name('user.profile');
+
+    //Order
+    Route::get("/user/orders", UserOrdersComponent::class)->name('user.orders');
+    Route::get("/user/orders/{order_id}", UserOrderDetailsComponent::class)->name('user.orderdetails');
+
+    //User review 
+    Route::get("/user/review/{order_item_id}", UserReviewComponent::class)->name('user.review');
+
+    //Change Password
+    Route::get("/user/change-password", UserChangePasswordComponent::class)->name('user.changepassword');
 });
 //for Admin
 Route::middleware([
@@ -114,4 +138,8 @@ Route::middleware([
     Route::get("/admin/coupons", AdminCouponsComponent::class)->name('admin.coupons');
     Route::get("/admin/coupons/add", AdminAddCouponsComponent::class)->name('admin.addcoupons');
     Route::get("/admin/coupons/edit/{coupon_id}", AdminEditCouponsComponent::class)->name('admin.editcoupons');
+
+    //orders
+    Route::get("/admin/orders", AdminOrderComponent::class)->name('admin.orders');
+    Route::get("/admin/orders/{order_id}", AdminOrderDetailsComponent::class)->name('admin.orderdetals');
 });
