@@ -71,6 +71,10 @@
                 class_entered: "lz-entered",
                 class_exited: "lz-exited",
             });
+
+            // setTimeout(() => {
+            //     $('.alert.alert-success').slideUp();
+            // }, 3000);    
         })();
     </script>
     @yield('loading')

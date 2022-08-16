@@ -7,6 +7,7 @@ use App\Models\Products;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Gloudemans\Shoppingcart\Facades\Cart as Cart;
+use Illuminate\Support\Facades\Auth;
 
 class ShopComponent extends Component
 {
@@ -66,6 +67,13 @@ class ShopComponent extends Component
             $products = Products::whereBetween('regular_price', [$this->min_price, $this->max_price])->paginate($this->pagesize);
         }
         $categories = Category::all();
+        //Cart Save USer
+
+        if (Auth::check()) {
+            Cart::instance('cart')->store(Auth::user()->email);
+            Cart::instance('wishlist')->store(Auth::user()->email);
+        }
+
         $popular_products = Products::where('featured', 1)->limit(4)->get();
         return view('livewire.shop-component', ['products' => $products, 'popular_products' => $popular_products, "categories" => $categories])->layout('layouts.base');
     }

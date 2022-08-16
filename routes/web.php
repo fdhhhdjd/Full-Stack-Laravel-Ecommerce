@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\ForgotController;
+use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\SocialController;
 use App\Http\Livewire\AboutComponent;
 use App\Http\Livewire\Admin\AdminAddCategoryComponent;
 use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminCategoryComponent;
+use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\Admin\AdminCouponsComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponents;
 use App\Http\Livewire\Admin\AdminEditCategoryComponent;
@@ -17,10 +21,12 @@ use App\Http\Livewire\Admin\AdminOrderComponent;
 use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
 use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\Admin\AdminSaleComponent;
+use App\Http\Livewire\Admin\AdminSettingComponent;
 use App\Http\Livewire\Admin\EditHomeSliderComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\CheckoutComponent;
+use App\Http\Livewire\ContactComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\SearchComponent;
@@ -28,6 +34,7 @@ use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserChangePasswordComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Livewire\User\UserEditProfileComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserProfileComponent;
@@ -76,7 +83,19 @@ Route::get("/user/checkout", CheckoutComponent::class)->name('order.checkout');
 //Thank You Checkout Success
 Route::get("/user/thank", ThankyouComponent::class)->name('checkout.thankyou');
 
+//Contact
+Route::get("/contact-us", ContactComponent::class)->name('contact');
 
+
+//Login Google
+// Route::get("/login-google", [SocialController::class, 'loginGoogle'])->name('user.social');
+Route::get('/auth/google', [SocialController::class, 'redirect'])->name('user.social.redirect');
+Route::get('/auth/google/callback', [SocialController::class, 'callback'])->name('user.social.callback');
+
+//forgot viet chay
+Route::post("/forgotpassword", [ForgotController::class, 'postForgot'])->name('forgotpassword');
+Route::post("/resetpassword", [ResetPasswordController::class, 'postreset'])->name('post.reset.password');
+Route::get("/reset", [ResetPasswordController::class, 'resetviewpassword'])->name('resetviewpassword');
 
 //for user
 Route::middleware([
@@ -88,6 +107,10 @@ Route::middleware([
 
     //profile
     Route::get("/user/profile", UserProfileComponent::class)->name('user.profile');
+    //Update Profile
+    Route::get("/user/profile/edit", UserEditProfileComponent::class)->name('user.editprofile');
+
+
 
     //Order
     Route::get("/user/orders", UserOrdersComponent::class)->name('user.orders');
@@ -142,4 +165,11 @@ Route::middleware([
     //orders
     Route::get("/admin/orders", AdminOrderComponent::class)->name('admin.orders');
     Route::get("/admin/orders/{order_id}", AdminOrderDetailsComponent::class)->name('admin.orderdetals');
+
+
+    //Contact
+    Route::get("/admin/contact", AdminContactComponent::class)->name('admin.contact');
+
+    //Setting
+    Route::get("/admin/settings", AdminSettingComponent::class)->name('admin.settings');
 });

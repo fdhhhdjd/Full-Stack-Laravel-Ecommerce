@@ -87,8 +87,17 @@
                                                         Orders</a>
                                                 </li>
                                                 <li class="menu-item">
+                                                    <a href="{{ route('admin.contact') }}" title="contact">Manager
+                                                        Contact</a>
+                                                </li>
+
+                                                <li class="menu-item">
                                                     <a href="{{ route('admin.sale') }}" title="Dashboard">
-                                                        Sale Settings</a>
+                                                        Managers Sale </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="{{ route('admin.settings') }}" title="setting">Settings
+                                                    </a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a href="{{ route('logout') }}" title="logout"
@@ -215,7 +224,7 @@
                                     <a href="/checkout" class="link-term mercado-item-title">Checkout</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="contact-us.html" class="link-term mercado-item-title">Contact Us</a>
+                                    <a href="/contact-us" class="link-term mercado-item-title">Contact Us</a>
                                 </li>
                             </ul>
                         </div>

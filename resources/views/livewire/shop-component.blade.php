@@ -1,5 +1,4 @@
 <main id="main" class="main-site left-sidebar">
-
     <div class="container">
 
         <div class="wrap-breadcrumb">
@@ -79,7 +78,6 @@
                     }
                 </style>
                 <div class="row">
-
                     <ul class="product-list grid-products equal-container">
                         @php
                             $witems = Cart::instance('wishlist')
