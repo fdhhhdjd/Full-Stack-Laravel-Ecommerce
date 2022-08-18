@@ -10,6 +10,7 @@ use Livewire\WithPagination;
 class AdminCouponsComponent extends Component
 {
     use WithPagination;
+    public $searchTerm;
     public function deleteCoupon($coupon_id)
     {
         $coupon = Coupon::find($coupon_id);
@@ -18,7 +19,9 @@ class AdminCouponsComponent extends Component
     }
     public function render()
     {
-        $coupons = Coupon::paginate(5);
+        $search = '%' . $this->searchTerm . '%';
+        $coupons = Coupon::where('code', 'LIKE', $search)->orWhere('type', 'LIKE', $search)->orWhere('value', 'LIKE', $search)->orWhere('cart_value', 'LIKE', $search)->paginate(5);
+
         return view('livewire.admin.admin-coupons-component', ['coupons' => $coupons])->layout('layouts.base');
     }
 }

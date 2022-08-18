@@ -19,14 +19,19 @@
 
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 All Product
 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <input type="text" name="" id="" class="form-control"
+                                    placeholder="Search..." wire:model="searchTerm" />
+                            </div>
+                            <div class="col-md-4">
                                 <a href="{{ route('admin.addproduct') }}" class="btn btn-success pull-right">Add New</a>
 
                             </div>
+
                         </div>
                     </div>
 
@@ -43,10 +48,10 @@
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Stock</th>
-                                    <th>Regular Price</th>
                                     <th>Price</th>
                                     <th>Sale Price</th>
                                     <th>Category</th>
+                                    <th>SubCategory</th>
                                     <th>Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -62,7 +67,17 @@
                                         <td>{{ $product->regular_price }}</td>
                                         <td>{{ $product->sale_price }}</td>
                                         <td>{{ $product->category->name }}</td>
-                                        <td>{{ $product->name }}</td>
+                                        <td>
+                                            {{-- @if (count($product->subCategory) > 0)
+                                                @foreach ($product->subCategory as $scategory)
+                                                    {{ $scategory->name }}
+                                                @endforeach
+                                            @else
+                                                -
+                                            @endif --}}
+
+                                            {{ is_null($product->subCategory) ? '-' : $product->subCategory->name }}
+                                        </td>
                                         <td>{{ $product->created_at }}</td>
                                         <td>
                                             <a href="{{ route('admin.editproduct', ['product_slug' => $product->slug]) }}"
@@ -71,8 +86,7 @@
                                             {{-- <a href="#" onclick="return confirm('Are you sure?')"
                                                 wire:click="deleteProduct({{ $product->id }})">
                                                 <i class="fa fa-times fa-2x text-danger"></i></a> --}}
-                                            <a href="{{ route('admin.deleteproduct', ['id' => $product->id]) }}"
-                                                onclick="return confirm('Are you sure?')">
+                                            <a href="{{ route('admin.deleteproduct', ['id' => $product->id]) }}">
                                                 <i class="fa fa-times fa-2x text-danger"></i></a>
                                         </td>
                                     </tr>

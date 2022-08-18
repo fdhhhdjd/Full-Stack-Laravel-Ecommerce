@@ -67,7 +67,7 @@
                                     <i class="fa fa-google fa-fw">
                                     </i> Login with Google+
                                 </a>
-                                <a href="#" class="facebook-btn">
+                                <a href="{{ route('user.social.facebook.redirect') }}" class="facebook-btn">
                                     <i class="fa fa-facebook fa-fw"></i> Login with Facebook
                                 </a>
                                 <hr>

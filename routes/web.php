@@ -1,17 +1,22 @@
 <?php
 
 use App\Http\Controllers\ForgotController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\SocialFacebookController;
 use App\Http\Livewire\AboutComponent;
+use App\Http\Livewire\Admin\AdminAddAttributesComponent;
 use App\Http\Livewire\Admin\AdminAddCategoryComponent;
 use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
+use App\Http\Livewire\Admin\AdminAttributesComponent;
 use App\Http\Livewire\Admin\AdminCategoryComponent;
 use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\Admin\AdminCouponsComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponents;
+use App\Http\Livewire\Admin\AdminEditAttributesComponent;
 use App\Http\Livewire\Admin\AdminEditCategoryComponent;
 use App\Http\Livewire\Admin\AdminEditCouponsComponent;
 use App\Http\Livewire\Admin\AdminEditProductComponent;
@@ -68,7 +73,7 @@ Route::get('/checkout', CheckoutComponent::class);
 Route::get('/product/{slug}', DetailsComponent::class)->name('product.details');
 
 //page choose category get all product category
-Route::get('/product-category/{category_slug}', CategoryComponent::class)->name('product.category');
+Route::get('/product-category/{category_slug}/{scategory_slug?}', CategoryComponent::class)->name('product.category');
 
 //page about
 Route::get('/about', AboutComponent::class);
@@ -86,12 +91,13 @@ Route::get("/user/thank", ThankyouComponent::class)->name('checkout.thankyou');
 //Contact
 Route::get("/contact-us", ContactComponent::class)->name('contact');
 
-
+// Route::get('/dangnhap', [LoginController::class, 'LoginPage'])->name('user.login');
 //Login Google
-// Route::get("/login-google", [SocialController::class, 'loginGoogle'])->name('user.social');
 Route::get('/auth/google', [SocialController::class, 'redirect'])->name('user.social.redirect');
 Route::get('/auth/google/callback', [SocialController::class, 'callback'])->name('user.social.callback');
-
+//Login Facebook
+Route::get('/auth/facebook', [SocialFacebookController::class, 'redirect'])->name('user.social.facebook.redirect');
+Route::get('/auth/facebook/callback', [SocialFacebookController::class, 'callback'])->name('user.social.facebook.callback');
 //forgot viet chay
 Route::post("/forgotpassword", [ForgotController::class, 'postForgot'])->name('forgotpassword');
 Route::post("/resetpassword", [ResetPasswordController::class, 'postreset'])->name('post.reset.password');
@@ -134,14 +140,14 @@ Route::middleware([
     //Category
     Route::get("/admin/categories", AdminCategoryComponent::class)->name('admin.categories');
     Route::get("/admin/category/add", AdminAddCategoryComponent::class)->name('admin.addcategory');
-    Route::get("/admin/category/edit/{category_slug}", AdminEditCategoryComponent::class)->name('admin.editcategory');
+    Route::get("/admin/category/edit/{category_slug}/{scategory_slug?}", AdminEditCategoryComponent::class)->name('admin.editcategory');
     Route::get("/admin/category/delete/{id}", [AdminCategoryComponent::class, 'deleteCategory'])->name('admin.deletecategory');
 
     //product
 
     Route::get("/admin/products", AdminProductComponent::class)->name('admin.products');
     Route::get("/admin/product/add", AdminAddProductComponent::class)->name('admin.addproduct');
-    Route::get("/admin/product/edit/{product_slug}", AdminEditProductComponent::class)->name('admin.editproduct');
+    Route::get("/admin/product/edit/{product_slug}/{scategory_slug?}", AdminEditProductComponent::class)->name('admin.editproduct');
     Route::get("/admin/product/delete/{id}", [AdminProductComponent::class, 'deleteProduct'])->name('admin.deleteproduct');
 
     //Slider
@@ -172,4 +178,9 @@ Route::middleware([
 
     //Setting
     Route::get("/admin/settings", AdminSettingComponent::class)->name('admin.settings');
+
+    //Attribut
+    Route::get("/admin/attributes", AdminAttributesComponent::class)->name('admin.attributes');
+    Route::get("/admin/attributes/add", AdminAddAttributesComponent::class)->name('admin.add_attributes');
+    Route::get("/admin/attributes/edit/{attribute_id}", AdminEditAttributesComponent::class)->name('admin.edit_attributes');
 });

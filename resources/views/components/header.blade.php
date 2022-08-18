@@ -83,6 +83,10 @@
                                                         Coupons</a>
                                                 </li>
                                                 <li class="menu-item">
+                                                    <a href="{{ route('admin.attributes') }}" title="Attribute">Manager
+                                                        Attributes</a>
+                                                </li>
+                                                <li class="menu-item">
                                                     <a href="{{ route('admin.orders') }}" title="Orders">Manager
                                                         Orders</a>
                                                 </li>

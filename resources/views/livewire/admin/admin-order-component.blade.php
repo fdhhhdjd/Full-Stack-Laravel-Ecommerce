@@ -17,11 +17,16 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        All Orders
+                        <div class="row">
+                            <div class="col-md-6">
+                                All Orders
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="" id="" class="form-control"
+                                    placeholder="Search..." wire:model="searchTerm" />
+                            </div>
+                        </div>
                     </div>
-
-
-
                     <div class="panel-body">
                         @if (Session::has('order_message'))
                             <div class="alert alert-success" role="alert">

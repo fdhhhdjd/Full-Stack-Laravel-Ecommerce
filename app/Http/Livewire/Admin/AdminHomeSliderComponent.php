@@ -9,6 +9,7 @@ use Livewire\WithPagination;
 class AdminHomeSliderComponent extends Component
 {
     use WithPagination;
+    public $searchTerm;
     public function deleteSlider($id)
     {
         $slider = HomeSlider::find($id);
@@ -17,7 +18,9 @@ class AdminHomeSliderComponent extends Component
     }
     public function render()
     {
-        $sliders = HomeSlider::paginate(10);
+        $search = '%' . $this->searchTerm . '%';
+        $sliders = HomeSlider::where('title', 'LIKE', $search)->orWhere('subtitle', 'LIKE', $search)->orWhere('price', 'LIKE', $search)->orWhere('link', 'LIKE', $search)->paginate(10);
+
         return view('livewire.admin.admin-home-slider-component', ['sliders' => $sliders])->layout('layouts.base');
     }
 }

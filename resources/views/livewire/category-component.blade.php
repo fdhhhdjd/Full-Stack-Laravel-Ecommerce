@@ -109,12 +109,39 @@
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
                 <div class="widget mercado-widget categories-widget">
                     <h2 class="widget-title">All Categories</h2>
-                    <div class="widget-content">
+                    {{-- <div class="widget-content">
                         <ul class="list-category">
                             @foreach ($categories as $category)
                                 <li class="category-item"><a
                                         href="{{ route('product.category', ['category_slug' => $category->slug]) }}"
                                         class="cate-link">{{ $category->name }}</a>
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </div> --}}
+                    <div class="widget-content">
+                        <ul class="list-category">
+                            @foreach ($categories as $category)
+                                <li
+                                    class="category-item {{ count($category->subCategory) > 0 ? 'has-child-cate' : '' }}">
+                                    <a href="{{ route('product.category', ['category_slug' => $category->slug]) }}"
+                                        class="cate-link">{{ $category->name }}</a>
+                                    @if (count($category->subCategory) > 0)
+                                        <span class="toggle-control">+</span>
+                                        <ul class="sub-cate">
+                                            @foreach ($category->subCategory as $scategory)
+                                                <li class="category-item">
+                                                    <a href="{{ route('product.category', ['category_slug' => $category->slug, 'scategory_slug' => $scategory->slug]) }}"
+                                                        class="cat-link">
+                                                        <i class="fa fa-caret-right"></i>
+                                                        {{ $scategory->name }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+
+                                        </ul>
+                                    @endif
                                 </li>
                             @endforeach
 

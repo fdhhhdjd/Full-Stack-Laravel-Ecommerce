@@ -12,7 +12,7 @@ class UserOrdersComponent extends Component
     use WithPagination;
     public function render()
     {
-        $orders = Order::where('user_id', Auth::user()->id)->paginate(12);
+        $orders = Order::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->paginate(12);
         return view('livewire.user.user-orders-component', ['orders' => $orders])->layout('layouts.base');
     }
 }

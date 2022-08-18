@@ -35,6 +35,12 @@
                                     <a class="link-to-product"
                                         href="{{ route('product.details', ['slug' => $item->model->slug]) }}">{{ $item->model->name }}</a>
                                 </div>
+                                {{-- Attibute --}}
+                                @foreach ($item->options as $key => $value)
+                                    <div style="vertical-align: middle; width:180px">
+                                        <p><b>{{ $key }}: {{ $value }}</b></p>
+                                    </div>
+                                @endforeach
                                 <div class="price-field produtc-price">
                                     <p class="price">${{ $item->model->regular_price }}</p>
                                 </div>

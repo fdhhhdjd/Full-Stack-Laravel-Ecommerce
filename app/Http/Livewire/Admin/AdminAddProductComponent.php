@@ -2,8 +2,11 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\AttributeValue;
 use App\Models\Category;
+use App\Models\ProductAttribute;
 use App\Models\Products;
+use App\Models\Subcategory;
 use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -27,11 +30,34 @@ class AdminAddProductComponent extends Component
     public $category_id;
     public $images;
 
+    //Subcategory
+    public $scategory_id;
+
+    //Attributes
+    public $attr;
+    public $inputs = [];
+    public $attribute_arr = [];
+    public $attribute_value;
     public function mount()
     {
         $this->stock_status = 'instock';
         $this->featured = 0;
     }
+    //attribute
+    public function add()
+    {
+        if (!in_array($this->attr, $this->attribute_arr)) {
+            array_push($this->inputs, $this->attr);
+            array_push($this->attribute_arr, $this->attr);
+        }
+    }
+    //remove Attributes
+    public function remove($attr)
+    {
+        unset($this->inputs[$attr]);
+    }
+
+
     public function generateslug()
     {
         $this->slug = Str::slug($this->name, '-');
@@ -94,13 +120,37 @@ class AdminAddProductComponent extends Component
             $product->images = $imagesname;
         }
         $product->category_id = $this->category_id;
+        if ($this->scategory_id) {
+            $product->subcategory_id = $this->scategory_id;
+        }
         $product->save();
+
+        ///add attribute
+        foreach ($this->attribute_value as $key => $attribute_value) {
+            $avalues = explode(',', $attribute_value);
+            foreach ($avalues as $avalue) {
+                $attr_value = new AttributeValue();
+                $attr_value->product_attribute_id = $key;
+                $attr_value->value = $avalue;
+                $attr_value->product_id = $product->id;
+                $attr_value->save();
+            }
+        }
+
         session()->flash('message', 'Product has been created successfully!');
         return redirect()->route('admin.products');
+    }
+    public function changeSubcategory()
+    {
+        $this->scategory_id = 0;
     }
     public function render()
     {
         $categories = Category::all();
-        return view('livewire.admin.admin-add-product-component', ['categories' => $categories])->layout('layouts.base');
+        $scategories = Subcategory::where('category_id', $this->category_id)->get();
+
+        //Attribute value
+        $pattributes = ProductAttribute::all();
+        return view('livewire.admin.admin-add-product-component', ['categories' => $categories, 'scategories' => $scategories, 'pattributes' => $pattributes])->layout('layouts.base');
     }
 }

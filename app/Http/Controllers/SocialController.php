@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -21,7 +22,7 @@ class SocialController extends Controller
             $user = User::where('email', $users->email)->first();
             if ($user) {
                 Auth::login($user);
-                return redirect()->route('user.dashboard');
+                return redirect(session('link'));
             } else {
                 $newUser = User::create([
                     'name' => $users->name,
@@ -33,7 +34,7 @@ class SocialController extends Controller
                 return redirect()->route('user.dashboard');
             }
         } catch (Exception $e) {
-            return redirect('/login');
+            return redirect('/');
         }
     }
 }

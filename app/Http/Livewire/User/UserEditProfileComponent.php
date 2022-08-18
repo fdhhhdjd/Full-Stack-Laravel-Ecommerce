@@ -42,6 +42,7 @@ class UserEditProfileComponent extends Component
     {
         $user = User::find(Auth::user()->id);
         $user->name = $this->name;
+
         $user->save();
         $user->profile->mobile = $this->mobile;
         if ($this->newimage) {

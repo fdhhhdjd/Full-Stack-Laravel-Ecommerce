@@ -13,7 +13,18 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Contact Messages
+                        <div class="row">
+                            <div class="col-md-6">
+                                Contact Messages
+
+                            </div>
+                            <div class="col-md-6">
+
+                                <input type="text" name="" id="" class="form-control"
+                                    placeholder="Search..." wire:model="searchTerm" />
+
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped ">

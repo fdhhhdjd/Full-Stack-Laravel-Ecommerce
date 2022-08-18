@@ -11,6 +11,15 @@
         nav .hidden {
             display: block !important;
         }
+
+        .sclist {
+            list-style: none;
+        }
+
+        .sclist li {
+            line-height: 33px;
+            border-bottom: 1px solid #ccc
+        }
     </style>
     <div class="container" style="padding:30px 0;">
         <div class="row">
@@ -19,12 +28,16 @@
 
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 All Categories
-
                             </div>
-                            <div class="col-md-6">
-                                <a href="{{ route('admin.addcategory') }}" class="btn btn-success pull-right">Add New</a>
+                            <div class="col-md-4">
+                                <input type="text" name="" id="" class="form-control"
+                                    placeholder="Search..." wire:model="searchTerm" />
+                            </div>
+                            <div class="col-md-4">
+                                <a href="{{ route('admin.addcategory') }}" class="btn btn-success pull-right">Add
+                                    New</a>
 
                             </div>
                         </div>
@@ -43,6 +56,7 @@
                                     <th>Id</th>
                                     <th>Category Name</th>
                                     <th>Slug</th>
+                                    <th>Sub Category</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -52,6 +66,25 @@
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
+                                        <td>
+                                            @foreach ($category->subCategory as $scategory)
+                                                @if ($scategory)
+                                                    <ul class="sclist">
+                                                        <li><i class="fa fa-caret-right"></i>{{ $scategory->name }}
+                                                            <a
+                                                                href="{{ route('admin.editcategory', ['category_slug' => $category->slug, 'scategory_slug' => $scategory->slug]) }}">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <a href="#"
+                                                                onclick="return confirm('Are you sure?') || event.stopImmediatePropagation()"
+                                                                wire:click.prevent="deleteSubcategory({{ $scategory->id }})">
+                                                                <i class="fa fa-times text-danger"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                @endif
+                                            @endforeach
+                                        </td>
                                         <td>
                                             <a href="{{ route('admin.editcategory', ['category_slug' => $category->slug]) }}"
                                                 style="margin-right:1rem">

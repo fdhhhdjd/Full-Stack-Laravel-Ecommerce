@@ -11,6 +11,7 @@ use Livewire\WithPagination;
 class AdminOrderComponent extends Component
 {
     use WithPagination;
+    public $searchTerm;
     public function updateOrderStatus($order_id, $status)
     {
         $order = Order::find($order_id);
@@ -26,7 +27,8 @@ class AdminOrderComponent extends Component
 
     public function render()
     {
-        $orders = Order::orderBy('created_at', 'DESC')->paginate(12);
+        $search = '%' . $this->searchTerm . '%';
+        $orders = Order::where('firstname', 'LIKE', $search)->orWhere('lastname', 'LIKE', $search)->orWhere('mobile', 'LIKE', $search)->orWhere('email', 'LIKE', $search)->orWhere('status', 'LIKE', $search)->orderBy('created_at', 'DESC')->paginate(12);
         return view('livewire.admin.admin-order-component', ['orders' => $orders])->layout('layouts.base');
     }
 }

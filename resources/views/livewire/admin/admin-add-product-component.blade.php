@@ -162,7 +162,8 @@
                             <div class="form-group">
                                 <label for="" class="col-md-4 control-label">Category</label>
                                 <div class="col-md-4">
-                                    <select class="form-control" wire:model="category_id">
+                                    <select class="form-control" wire:model="category_id"
+                                        wire:change="changeSubcategory">
                                         <option value="0">Select Category</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -174,6 +175,56 @@
 
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="" class="col-md-4 control-label">SubCategory</label>
+                                <div class="col-md-4">
+                                    <select class="form-control" wire:model="scategory_id">
+                                        <option value="0">Select Category</option>
+                                        @foreach ($scategories as $scategory)
+                                            <option value="{{ $scategory->id }}">{{ $scategory->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('scategory_id')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-md-4 control-label">Attribute</label>
+                                <div class="col-md-3">
+                                    <select class="form-control" wire:model="attr">
+                                        <option value="0">Select Atribute</option>
+                                        @foreach ($pattributes as $pattribute)
+                                            <option value="{{ $pattribute->id }}">{{ $pattribute->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('attr')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-info"
+                                        wire:click.prevent="add">Add</button>
+                                </div>
+                            </div>
+                            @foreach ($inputs as $key => $value)
+                                <div class="form-group">
+                                    <label for=""
+                                        class="col-md-4 control-label">{{ $pattribute->where('id', $attribute_arr[$key])->first()->name }}</label>
+                                    <div class="col-md-3">
+                                        <input type="text"
+                                            placeholder="{{ $pattribute->where('id', $attribute_arr[$key])->first()->name }}"
+                                            class="form-control input-md"
+                                            wire:model="attribute_value.{{ $value }}" />
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                            wire:click.prevent="remove({{ $key }})">Remote</button>
+                                    </div>
+                                </div>
+                            @endforeach
                             <div class="form-group">
                                 <label for="" class="col-md-4 control-label"></label>
                                 <div class="col-md-4">

@@ -11,9 +11,11 @@ class DetailsComponent extends Component
 {
     public $slug;
     public $qty;
+    //Attribute
+    public $satt = [];
     public function store($product_id, $product_name, $product_price)
     {
-        Cart::instance('cart')->add($product_id, $product_name, $this->qty, $product_price)->associate('App\Models\Products');
+        Cart::instance('cart')->add($product_id, $product_name, $this->qty, $product_price, $this->satt)->associate('App\Models\Products');
         session()->flash('success_message', 'Item added in Cart successfully');
         return redirect()->route('product.cart');
     }

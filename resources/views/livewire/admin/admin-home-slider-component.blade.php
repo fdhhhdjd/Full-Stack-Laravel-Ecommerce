@@ -19,11 +19,15 @@
 
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-6">
-                                All Categories
+                            <div class="col-md-4">
+                                All Sliders
 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <input type="text" name="" id="" class="form-control"
+                                    placeholder="Search..." wire:model="searchTerm" />
+                            </div>
+                            <div class="col-md-4">
                                 <a href="{{ route('admin.addhomeslider') }}" class="btn btn-success pull-right">Add
                                     New</a>
 
