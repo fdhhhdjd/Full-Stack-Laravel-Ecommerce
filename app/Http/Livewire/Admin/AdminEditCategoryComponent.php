@@ -63,6 +63,7 @@ class AdminEditCategoryComponent extends Component
             $category->slug = $this->slug;
             $category->save();
         }
+        Delete_cache('categories');
         return redirect()->route('admin.categories');
     }
     public function render()

@@ -3,6 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Coupon;
+use App\Models\OrderItem;
+use App\Models\Products;
+use App\Models\Review;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart as Cart;
 use Illuminate\Support\Facades\Auth;
@@ -133,8 +136,11 @@ class CartComponent extends Component
     }
     public function render()
     {
-
-        //coupons
+        $ProductHasReview = GetCache('ProductHasReview');
+        if (is_null($ProductHasReview)) {
+            $ProductHasReview = OrderItem::select('products.slug as pslug', 'products.name', 'products.image', 'products.regular_price', 'products.sale_price', 'order_items.id')->where('rstatus', 1)->join('products', 'products.id', '=', 'order_items.product_id')->get();
+            SetCache('ProductHasReview', $ProductHasReview);
+        }
         if (session()->has('coupon')) {
             if (Cart::instance('cart')->subtotal() < session()->get('coupon')['cart_value']) {
                 session()->forget('coupons');
@@ -147,6 +153,6 @@ class CartComponent extends Component
         if (Auth::check()) {
             Cart::instance('cart')->store(Auth::user()->email);
         }
-        return view('livewire.cart-component')->layout('layouts.base');
+        return view('livewire.cart-component', ['ProductHasReview' => $ProductHasReview])->layout('layouts.base');
     }
 }

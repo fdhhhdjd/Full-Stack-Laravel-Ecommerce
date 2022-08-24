@@ -65,7 +65,9 @@
                     <div class="row">
                         <div class="col-xs-8 text-left">
                             <span class="icon-stat-label">Total Revenue</span>
-                            <span class="icon-stat-value">${{ $totalRevenue }}</span>
+                            <span class="icon-stat-value">
+                                $<span class="counter"> {{ $totalRevenue }}</span>
+                            </span>
                         </div>
                         <div class="col-xs-4 text-center">
                             <i class="fa fa-dollar icon-stat-visual bg-primary"></i>
@@ -81,7 +83,9 @@
                     <div class="row">
                         <div class="col-xs-8 text-left">
                             <span class="icon-stat-label">Total Sales</span>
-                            <span class="icon-stat-value">{{ $totalSales }}</span>
+                            <span class="icon-stat-value">
+                                <span class="counter"> {{ $totalSales }}</span>
+                            </span>
                         </div>
                         <div class="col-xs-4 text-center">
                             <i class="fa fa-gift icon-stat-visual bg-secondary"></i>
@@ -97,7 +101,9 @@
                     <div class="row">
                         <div class="col-xs-8 text-left">
                             <span class="icon-stat-label">Today Revenue</span>
-                            <span class="icon-stat-value">${{ $todayRevenue }}</span>
+                            <span class="icon-stat-value">$
+                                <span class="counter"> {{ $todayRevenue }}</span>
+                            </span>
                         </div>
                         <div class="col-xs-4 text-center">
                             <i class="fa fa-dollar icon-stat-visual bg-primary"></i>
@@ -114,7 +120,9 @@
                         <div class="col-xs-8 text-left">
 
                             <span class="icon-stat-label">Today Sales</span>
-                            <span class="icon-stat-value">{{ $todaySales }}</span>
+                            <span class="icon-stat-value">
+                                <span class="counter"> {{ $todaySales }}</span>
+                            </span>
                         </div>
                         <div class="col-xs-4 text-center">
                             <i class="fa fa-gift icon-stat-visual bg-secondary"></i>

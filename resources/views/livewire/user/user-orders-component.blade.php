@@ -46,16 +46,16 @@
                             <tbody>
                                 @foreach ($orders as $order)
                                     <tr>
-                                        <td>{{ $order->id }}</td>
-                                        <td>{{ $order->subtotal }}</td>
-                                        <td>{{ $order->discount }}</td>
-                                        <td>{{ $order->tax }}</td>
-                                        <td>{{ $order->total }}</td>
+                                        <td class="counter">{{ $order->id }}</td>
+                                        <td class="counter">{{ $order->subtotal }}</td>
+                                        <td class="counter">{{ $order->discount }}</td>
+                                        <td class="counter">{{ $order->tax }}</td>
+                                        <td class="counter">{{ $order->total }}</td>
                                         <td>{{ $order->firstname }}</td>
                                         <td>{{ $order->lastname }}</td>
                                         <td>{{ $order->mobile }}</td>
                                         <td>{{ $order->email }}</td>
-                                        <td>{{ $order->zipcode }}</td>
+                                        <td class="counter">{{ $order->zipcode }}</td>
                                         <td>{{ $order->status }}</td>
                                         <td>{{ $order->created_at }}</td>
                                         <td>

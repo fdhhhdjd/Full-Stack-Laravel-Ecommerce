@@ -65,7 +65,10 @@
                     <div class="row">
                         <div class="col-xs-8 text-left">
                             <span class="icon-stat-label">Total Cost</span>
-                            <span class="icon-stat-value">${{ $totalCost }}</span>
+                            <span class="icon-stat-value ">$
+
+                                <span class="counter">{{ $totalCost }}</span>
+                            </span>
                         </div>
                         <div class="col-xs-4 text-center">
                             <i class="fa fa-dollar icon-stat-visual bg-primary"></i>
@@ -81,7 +84,10 @@
                     <div class="row">
                         <div class="col-xs-8 text-left">
                             <span class="icon-stat-label">Total Purchase</span>
-                            <span class="icon-stat-value">{{ $totalPurchased }}</span>
+                            <span class="icon-stat-value">
+                                <span class="counter">{{ $totalPurchased }}</span>
+
+                            </span>
                         </div>
                         <div class="col-xs-4 text-center">
                             <i class="fa fa-gift icon-stat-visual bg-secondary"></i>
@@ -97,7 +103,9 @@
                     <div class="row">
                         <div class="col-xs-8 text-left">
                             <span class="icon-stat-label">Total Delivery</span>
-                            <span class="icon-stat-value">${{ $totalDeliverd }}</span>
+                            <span class="icon-stat-value">$
+                                <span class="counter">{{ $totalDeliverd }}</span>
+                            </span>
                         </div>
                         <div class="col-xs-4 text-center">
                             <i class="fa fa-gift icon-stat-visual bg-secondary"></i>
@@ -114,7 +122,9 @@
                         <div class="col-xs-8 text-left">
 
                             <span class="icon-stat-label">Total Canceled</span>
-                            <span class="icon-stat-value">{{ $totalCancel }}</span>
+                            <span class="icon-stat-value">
+                                <span class="counter"> {{ $totalCancel }}</span>
+                            </span>
                         </div>
                         <div class="col-xs-4 text-center">
                             <i class="fa fa-gift icon-stat-visual bg-secondary"></i>

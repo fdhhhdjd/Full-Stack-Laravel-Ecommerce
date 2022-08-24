@@ -179,7 +179,8 @@
                                                     <span class="flash-item new-label">new</span>
                                                 </div>
                                                 <div class="wrap-btn">
-                                                    <a href="#" class="function-link">quick view</a>
+                                                    <a href="{{ route('product.details', ['slug' => $lproduct->slug]) }}"
+                                                        class="function-link">quick view</a>
                                                 </div>
                                             </div>
                                             <div class="product-info">

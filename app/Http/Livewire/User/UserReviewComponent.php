@@ -36,6 +36,8 @@ class UserReviewComponent extends Component
         $orderItem = OrderItem::find($this->order_item_id);
         $orderItem->rstatus = true;
         $orderItem->save();
+        Delete_cache('ProductHasReview');
+        return redirect()->route('user.orders');
         session()->flash('message', 'Your review has ben added success!');
     }
     public function render()

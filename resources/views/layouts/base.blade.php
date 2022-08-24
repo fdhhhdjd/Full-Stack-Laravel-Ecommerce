@@ -61,6 +61,18 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.js"></script>
 
+    {{-- Counter up --}}
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="{{ asset('assets/js/counterup.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000
+            });
+        })
+    </script>
     <script>
         (function() {
             var ll = new LazyLoad({
@@ -71,12 +83,9 @@
                 class_entered: "lz-entered",
                 class_exited: "lz-exited",
             });
-
-            // setTimeout(() => {
-            //     $('.alert.alert-success').slideUp();
-            // }, 3000);    
         })();
     </script>
+
     @yield('loading')
     @livewireScripts
     @stack('scripts')

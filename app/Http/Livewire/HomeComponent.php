@@ -10,16 +10,23 @@ use App\Models\Sale;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Illuminate\Support\Facades\Redis;
 
 class HomeComponent extends Component
 {
 
     public function render()
     {
+        $lproducts = GetCache('lproducts');
+        if (is_null($lproducts)) {
+
+            $lproducts = Products::orderBy('created_at', 'DESC')->get()->take(8);
+            SetCache('lproducts', $lproducts);
+        }
         $sliders = HomeSlider::where('status', 1)->get();
+
+        // dd($lproducts);
         //Show Latest Products On Homepage
-        $lproducts = Products::orderBy('created_at', 'DESC')->get()->take(8);
+        // $lproducts = Products::orderBy('created_at', 'DESC')->get()->take(8);
         //Admin Show Product Categories On Homepage
         $category = HomeCategory::find(1);
         $cats = explode(',', $category->sel_categories);

@@ -43,7 +43,7 @@ class AdminAddCategoryComponent extends Component
             $category->slug = $this->slug;
             $category->save();
         }
-
+        Delete_cache('categories');
         session()->flash('message', 'Category has been created successfully!');
         return redirect()->route('admin.categories');
     }

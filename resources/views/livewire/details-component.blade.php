@@ -17,7 +17,7 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
+                <li class="item-link"><a href="/shop" class="link">home</a></li>
                 <li class="item-link"><span>detail</span></li>
             </ul>
         </div>
@@ -137,8 +137,23 @@
                             @endif
 
                             <div class="wrap-btn">
+                                @php
+                                    $witems = Cart::instance('wishlist')
+                                        ->content()
+                                        ->pluck('id');
+                                @endphp
+
                                 <a href="#" class="btn btn-compare">Add Compare</a>
-                                <a href="#" class="btn btn-wishlist">Add Wishlist</a>
+
+                                @if ($witems->contains($product->id))
+                                    <a href="#" wire:click.prevent="removeToWishlist({{ $product->id }})"
+                                        class="btn btn-wishlist">Remove Wishlist</a>
+                                @else
+                                    <a href="#"
+                                        wire:click.prevent="addToWishlist({{ $product->id }}, '{{ $product->name }}',{{ $product->regular_price }})"
+                                        class="btn btn-wishlist">Add Wishlist</a>
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -340,5 +355,7 @@
 
             </div>
             <!--end container-->
+        </div>
+    </div>
 
 </main>

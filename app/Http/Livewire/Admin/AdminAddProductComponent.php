@@ -8,6 +8,7 @@ use App\Models\ProductAttribute;
 use App\Models\Products;
 use App\Models\Subcategory;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redis;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
@@ -95,6 +96,8 @@ class AdminAddProductComponent extends Component
             'image' => 'required|mimes:jpeg,png',
             'category_id' => 'required',
         ]);
+        //Redis
+
         $product = new Products();
         $product->name = $this->name;
         $product->slug = $this->slug;
@@ -136,6 +139,8 @@ class AdminAddProductComponent extends Component
                 $attr_value->save();
             }
         }
+        Delete_cache('lproducts');
+        Delete_cache('popular_products');
 
         session()->flash('message', 'Product has been created successfully!');
         return redirect()->route('admin.products');

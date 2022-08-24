@@ -34,7 +34,7 @@
   <script>
       function pre_loader() {
           $("#load").fadeOut();
-          $('#pre-loader').delay(1500).fadeOut(1000);
+          $('#pre-loader').delay(500).fadeOut(500);
       }
       pre_loader();
   </script>

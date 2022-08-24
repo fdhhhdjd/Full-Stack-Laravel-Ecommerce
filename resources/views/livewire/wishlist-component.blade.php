@@ -8,7 +8,7 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
+                <li class="item-link"><a href="/shop" class="link">home</a></li>
                 <li class="item-link"><span>Wishlist</span></li>
             </ul>
         </div>
@@ -70,7 +70,11 @@
                     @endforeach
                 </ul>
             @else
-                <h4>No Item In Wishlist</h4>
+                <div class="text-center" style="padding:30px 0;">
+                    <h1>Your WISHLIST is empty</h1>
+                    <p>Add WISHLIST to it now</p>
+                    <a href="/shop" class="btn btn-success">Shop Now</a>
+                </div>
             @endif
         </div>
     </div>

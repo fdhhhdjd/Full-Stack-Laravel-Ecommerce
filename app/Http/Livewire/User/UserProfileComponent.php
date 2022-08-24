@@ -17,7 +17,12 @@ class UserProfileComponent extends Component
             $profile->user_id = Auth::user()->id;
             $profile->save();
         }
-        $user = User::find(Auth::user()->id);
+        $user = GetCache(Auth::user()->id);
+        if (is_null($user)) {
+            $user = User::select('users.email', 'profiles.image', 'users.name', 'users.user_name', 'profiles.mobile', 'profiles.line1', 'profiles.line2', 'profiles.city', 'profiles.province', 'profiles.country', 'profiles.zipcode')->where('users.id', Auth::user()->id)->join('profiles', 'profiles.user_id', '=', 'users.id')->first();
+            // $user = User::find(Auth::user()->id);
+            SetCache(Auth::user()->id, $user);
+        }
         return view('livewire.user.user-profile-component', ['user' => $user])->layout('layouts.base');
     }
 }

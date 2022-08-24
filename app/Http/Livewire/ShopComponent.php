@@ -55,6 +55,7 @@ class ShopComponent extends Component
     use WithPagination;
     public function render()
     {
+
         if ($this->sorting == 'date') {
             // $products = Products::orderBy('created_at', 'DESC')->paginate($this->pagesize);
             $products = Products::whereBetween('regular_price', [$this->min_price, $this->max_price])->orderBy('created_at', 'DESC')->paginate($this->pagesize);
@@ -67,6 +68,7 @@ class ShopComponent extends Component
             $products = Products::whereBetween('regular_price', [$this->min_price, $this->max_price])->paginate($this->pagesize);
         }
         $categories = Category::all();
+
         //Cart Save USer
 
         if (Auth::check()) {
@@ -74,7 +76,11 @@ class ShopComponent extends Component
             Cart::instance('wishlist')->store(Auth::user()->email);
         }
 
-        $popular_products = Products::where('featured', 1)->limit(4)->get();
+        $popular_products = GetCache('popular_products');
+        if (is_null($popular_products)) {
+            $popular_products = Products::where('featured', 1)->limit(4)->get();
+            SetCache('popular_products', $popular_products);
+        }
         return view('livewire.shop-component', ['products' => $products, 'popular_products' => $popular_products, "categories" => $categories])->layout('layouts.base');
     }
 }

@@ -134,6 +134,7 @@ class AdminEditProductComponent extends Component
         //         'newimage' => 'required|mimes:jpeg,png',
         //     ]);
         // }
+        //Redis
         $product  = Products::find($this->product_id);
 
         $product->name = $this->name;
@@ -187,7 +188,8 @@ class AdminEditProductComponent extends Component
                 $attr_value->save();
             }
         }
-
+        Delete_cache('lproducts');
+        Delete_cache('popular_products');
         session()->flash('message', 'Product has been edit successfully!');
         return redirect()->route('admin.products');
     }

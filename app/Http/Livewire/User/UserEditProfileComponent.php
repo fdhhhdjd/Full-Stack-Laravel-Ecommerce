@@ -60,6 +60,7 @@ class UserEditProfileComponent extends Component
         $user->profile->country = $this->country;
         $user->profile->zipcode = $this->zipcode;
         $user->profile->save();
+        Delete_cache(Auth::user()->id);
         session()->flash('editprofile', 'Profile has been edit successfully!');
         return redirect()->route('user.profile');
     }
