@@ -6,6 +6,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Laravel\Socialite\Facades\Socialite;
 
 class SocialController extends Controller
@@ -18,11 +19,13 @@ class SocialController extends Controller
     public function callback()
     {
         try {
-            $users = Socialite::driver('google')->user();
+            // $users = Socialite::driver('google')->user();
+            $users = Socialite::driver('google')->stateless()->user();
+
             $user = User::where('email', $users->email)->first();
-            if ($user) {
+            if (isset($user)) {
                 Auth::login($user);
-                return redirect(session('link'));
+                return redirect()->route('/');
             } else {
                 $newUser = User::create([
                     'name' => $users->name,

@@ -18,11 +18,13 @@ class SocialFacebookController extends Controller
     public function callback()
     {
         try {
-            $users = Socialite::driver('facebook')->user();
+            // $users = Socialite::driver('facebook')->user();
+            $users = Socialite::driver('facebook')->stateless()->user();
             $user = User::where('email', $users->email)->first();
-            if ($user) {
+            if (isset($user)) {
                 Auth::login($user);
-                return redirect(session('link'));
+                // return redirect(session('link'));
+                return redirect()->route('/');
             } else {
                 $newUser = User::create([
                     'name' => $users->name,
