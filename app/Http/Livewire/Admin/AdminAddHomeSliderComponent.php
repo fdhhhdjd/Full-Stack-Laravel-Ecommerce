@@ -39,6 +39,7 @@ class AdminAddHomeSliderComponent extends Component
         $slider->status = $this->status;
         $slider->save();
         session()->flash('message', 'Slider has been created successfully!');
+        Delete_cache('lsliders');
         return redirect()->route('admin.homeslider');
     }
     public function render()

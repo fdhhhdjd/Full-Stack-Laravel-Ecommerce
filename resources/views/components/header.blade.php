@@ -1,3 +1,8 @@
+@php
+use App\Models\Setting;
+
+$Setting = Setting::find(1);
+@endphp
 <header id="header" class="header header-style-1">
     <div class="container-fluid">
         <div class="row">
@@ -7,7 +12,7 @@
                         <ul>
                             <li class="menu-item">
                                 <a title="Hotline: (+84) 798805741" href="#"><span
-                                        class="icon label-before fa fa-mobile"></span>Hotline: (+84) 798805741</a>
+                                        class="icon label-before fa fa-mobile"></span>Hotline: {{ $Setting->phone }}</a>
                             </li>
                         </ul>
                     </div>
@@ -20,16 +25,20 @@
                                         aria-hidden="true"></i></a>
                                 <ul class="submenu lang">
                                     <li class="menu-item"><a title="hungary" href="#"><span
-                                                class="img label-before"><img src="assets/images/lang-hun.png"
+                                                class="img label-before"><img
+                                                    src="{{ asset('assets/images/lang-hun.png') }}"
                                                     alt="lang-hun"></span>Hungary</a></li>
                                     <li class="menu-item"><a title="german" href="#"><span
-                                                class="img label-before"><img src="assets/images/lang-ger.png"
+                                                class="img label-before"><img
+                                                    src="{{ asset('assets/images/lang-ger.png') }}"
                                                     alt="lang-ger"></span>German</a></li>
                                     <li class="menu-item"><a title="french" href="#"><span
-                                                class="img label-before"><img src="assets/images/lang-fra.png"
+                                                class="img label-before"><img
+                                                    src="{{ asset('assets/images/lang-fra.png') }}"
                                                     alt="lang-fre"></span>French</a></li>
                                     <li class="menu-item"><a title="canada" href="#"><span
-                                                class="img label-before"><img src="assets/images/lang-can.png"
+                                                class="img label-before"><img
+                                                    src="{{ asset('assets/images/lang-can.png') }}"
                                                     alt="lang-can"></span>Canada</a></li>
                                 </ul>
                             </li>
@@ -191,23 +200,6 @@
                 </div>
 
                 <div class="nav-section header-sticky">
-                    <div class="header-nav-section">
-                        <div class="container">
-                            <ul class="nav menu-nav clone-main-menu" id="mercado_haead_menu" data-menuname="Sale Info">
-                                <li class="menu-item"><a href="#" class="link-term">Weekly Featured</a><span
-                                        class="nav-label hot-label">hot</span></li>
-                                <li class="menu-item"><a href="#" class="link-term">Hot Sale items</a><span
-                                        class="nav-label hot-label">hot</span></li>
-                                <li class="menu-item"><a href="#" class="link-term">Top new items</a><span
-                                        class="nav-label hot-label">hot</span></li>
-                                <li class="menu-item"><a href="#" class="link-term">Top Selling</a><span
-                                        class="nav-label hot-label">hot</span></li>
-                                <li class="menu-item"><a href="#" class="link-term">Top rated items</a><span
-                                        class="nav-label hot-label">hot</span></li>
-                            </ul>
-                        </div>
-                    </div>
-
                     <div class="primary-nav-section">
                         <div class="container">
                             <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2022 at 05:36 AM
+-- Generation Time: Sep 06, 2022 at 05:47 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -41,14 +41,14 @@ CREATE TABLE `attribute_values` (
 --
 
 INSERT INTO `attribute_values` (`id`, `product_attribute_id`, `value`, `product_id`, `created_at`, `updated_at`) VALUES
-(19, 3, 'red', 42, '2022-08-18 08:56:35', '2022-08-18 08:56:35'),
-(20, 3, 'black', 42, '2022-08-18 08:56:35', '2022-08-18 08:56:35'),
-(21, 4, '15', 42, '2022-08-18 08:56:35', '2022-08-18 08:56:35'),
-(22, 4, '16', 42, '2022-08-18 08:56:35', '2022-08-18 08:56:35'),
 (65, 3, 'Black', 44, '2022-08-18 10:35:31', '2022-08-18 10:35:31'),
 (66, 3, 'White', 44, '2022-08-18 10:35:31', '2022-08-18 10:35:31'),
 (67, 3, 'White', 45, '2022-08-18 10:45:21', '2022-08-18 10:45:21'),
-(68, 5, 'Asus', 45, '2022-08-18 10:45:21', '2022-08-18 10:45:21');
+(68, 5, 'Asus', 45, '2022-08-18 10:45:21', '2022-08-18 10:45:21'),
+(93, 3, 'red', 42, '2022-09-06 03:17:02', '2022-09-06 03:17:02'),
+(94, 3, 'black', 42, '2022-09-06 03:17:02', '2022-09-06 03:17:02'),
+(95, 4, '15', 42, '2022-09-06 03:17:02', '2022-09-06 03:17:02'),
+(96, 4, '16', 42, '2022-09-06 03:17:02', '2022-09-06 03:17:02');
 
 -- --------------------------------------------------------
 
@@ -141,7 +141,8 @@ CREATE TABLE `coupons` (
 INSERT INTO `coupons` (`id`, `code`, `type`, `value`, `cart_value`, `created_at`, `updated_at`, `expiry_date`) VALUES
 (3, 'OFF100', 'fixed', '100.00', '100.00', '2022-08-09 00:02:58', '2022-08-19 03:14:58', '2022-08-20'),
 (4, 'OFF20p', 'percent', '20.00', '1200.00', '2022-08-09 00:05:42', '2022-08-09 00:05:42', '2022-08-10'),
-(6, 'MT-35', 'percent', '35.00', '350.00', '2022-08-09 19:35:10', '2022-08-09 19:35:38', '2022-08-12');
+(6, 'MT-35', 'percent', '35.00', '350.00', '2022-08-09 19:35:10', '2022-08-09 19:35:38', '2022-08-12'),
+(7, 'Tai Dep Trai', 'percent', '15.00', '50.00', '2022-08-29 02:07:58', '2022-08-29 02:07:58', '2022-08-30');
 
 -- --------------------------------------------------------
 
@@ -293,24 +294,27 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `subtotal`, `discount`, `tax`, `total`, `firstname`, `lastname`, `mobile`, `email`, `line1`, `line2`, `city`, `province`, `country`, `zipcode`, `status`, `is_shipping_different`, `created_at`, `updated_at`, `delivered_date`, `canceled_date`) VALUES
-(14, 7, '83.00', '0.00', '17.43', '100.43', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmai.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '6300', 'delivered', 0, '2022-08-10 20:36:14', '2022-08-15 06:54:00', '2022-08-15', '2022-08-11'),
-(15, 7, '362.00', '0.00', '76.02', '438.02', 'Tien Tai', 'Nguyen Tien', '0798805741', 'nguyentientai10@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'Van Gia', 'Khánh Hòa', 'Vietnam', '6300', 'delivered', 0, '2022-08-11 01:42:32', '2022-08-11 01:42:32', NULL, NULL),
-(16, 8, '362.00', '0.00', '76.02', '438.02', 'thai nam', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'Khánh Hòa', 'Vietnam', '57000', 'delivered', 0, '2022-08-15 06:53:07', '2022-08-15 06:54:17', '2022-08-15', NULL),
-(17, 7, '50.00', '0.00', '10.50', '60.50', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '6300', 'ordered', 0, '2022-08-16 02:46:55', '2022-08-16 02:46:55', NULL, NULL),
-(18, 7, '50.00', '0.00', '10.50', '60.50', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'Van Gia', 'Larger city / Province', 'Vietnam', '5700', 'ordered', 0, '2022-08-16 02:48:47', '2022-08-16 02:48:47', NULL, NULL),
-(19, 7, '26.00', '0.00', '5.46', '31.46', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'Khánh Hòa', 'Vietnam', '57000', 'ordered', 0, '2022-08-16 02:51:17', '2022-08-16 02:51:17', NULL, NULL),
-(20, 7, '50.00', '0.00', '10.50', '60.50', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '57000', 'ordered', 0, '2022-08-16 02:54:21', '2022-08-16 02:54:21', NULL, NULL),
-(21, 7, '50.00', '0.00', '10.50', '60.50', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '5700', 'ordered', 0, '2022-08-16 03:26:02', '2022-08-16 03:26:02', NULL, NULL),
 (22, 7, '50.00', '0.00', '10.50', '60.50', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmai.com', 'to 9 thi tran van gia', NULL, 'khánh hòa', 'nha trang', 'Vietnam', '57202', 'canceled', 0, '2022-08-16 03:28:02', '2022-08-18 03:32:40', NULL, '2022-08-18'),
 (23, 7, '50.00', '0.00', '10.50', '60.50', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '57202', 'ordered', 0, '2022-08-16 03:29:55', '2022-08-16 03:29:55', NULL, NULL),
 (24, 7, '100.00', '0.00', '21.00', '121.00', 'Tien Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'Van Gia', 'Khánh Hòa', 'Vietnam', '5700', 'ordered', 0, '2022-08-16 03:31:30', '2022-08-16 03:31:30', NULL, NULL),
 (25, 7, '50.00', '0.00', '10.50', '60.50', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', NULL, 'khánh hòa', 'Khánh Hòa', 'Vietnam', '57000', 'ordered', 0, '2022-08-16 03:32:25', '2022-08-16 03:32:25', NULL, NULL),
 (26, 7, '238.00', '0.00', '49.98', '287.98', 'Tien Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'Van Gia', 'Khánh Hòa', 'Vietnam', '5700', 'ordered', 0, '2022-08-16 03:37:06', '2022-08-16 03:37:06', NULL, NULL),
-(27, 7, '586.00', '0.00', '123.06', '709.06', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmai.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '57000', 'ordered', 0, '2022-08-16 04:04:20', '2022-08-16 04:04:20', NULL, NULL),
-(28, 7, '123.00', '0.00', '25.83', '148.83', 'Nguyen', 'Tai', '0798807541', 'nguyentientai10@gmai.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'Van Gia', 'Khanh Hoa', 'Vietnam', '5700', 'ordered', 0, '2022-08-18 09:33:15', '2022-08-18 09:33:15', NULL, NULL),
-(29, 7, '400.00', '100.00', '84.00', '484.00', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmai.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '6300', 'ordered', 0, '2022-08-19 03:16:29', '2022-08-19 03:16:29', NULL, NULL),
-(30, 7, '400.00', '100.00', '84.00', '484.00', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmai.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '6300', 'ordered', 0, '2022-08-19 03:16:48', '2022-08-19 03:16:48', NULL, NULL),
-(31, 7, '238.00', '100.00', '49.98', '287.98', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '6300', 'delivered', 1, '2022-08-19 03:19:23', '2022-08-19 03:22:03', '2022-08-19', '2022-08-19');
+(27, 7, '586.00', '0.00', '123.06', '709.06', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmai.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '57000', 'delivered', 0, '2022-08-16 04:04:20', '2022-08-23 07:26:00', '2022-08-23', NULL),
+(28, 7, '123.00', '0.00', '25.83', '148.83', 'Nguyen', 'Tai', '0798807541', 'nguyentientai10@gmai.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'Van Gia', 'Khanh Hoa', 'Vietnam', '5700', 'delivered', 0, '2022-08-18 09:33:15', '2022-08-23 07:23:42', '2022-08-23', NULL),
+(29, 7, '400.00', '100.00', '84.00', '484.00', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmai.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '6300', 'delivered', 0, '2022-08-19 03:16:29', '2022-08-23 07:25:58', '2022-08-23', NULL),
+(30, 7, '400.00', '100.00', '84.00', '484.00', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmai.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '6300', 'delivered', 0, '2022-08-19 03:16:48', '2022-08-23 07:25:56', '2022-08-23', NULL),
+(31, 7, '238.00', '100.00', '49.98', '287.98', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '6300', 'delivered', 1, '2022-08-19 03:19:23', '2022-08-23 07:25:54', '2022-08-23', '2022-08-19'),
+(32, 10, '448.00', '0.00', '94.08', '542.08', 'Nguyen', 'Tai', '0798807541', 'nguyentientai10@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'Van Gia', 'Khanh Hoa', 'Vietnam', '5700', 'delivered', 0, '2022-08-23 07:28:23', '2022-08-23 07:29:23', '2022-08-23', NULL),
+(33, 10, '599.00', '0.00', '125.79', '724.79', 'Tien Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmai.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'Van Gia', 'Larger city / Province', 'Vietnam', '5700', 'delivered', 0, '2022-08-23 08:12:11', '2022-08-23 08:12:57', '2022-08-23', NULL),
+(34, 10, '559.00', '0.00', '117.39', '676.39', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'Khánh Hòa', 'Vietnam', '57000', 'delivered', 1, '2022-08-23 09:09:47', '2022-08-23 09:11:01', '2022-08-23', NULL),
+(35, 10, '155.00', '0.00', '32.55', '187.55', 'Tien Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmai.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'Van Gia', 'Khánh Hòa', 'Vietnam', '5700', 'delivered', 0, '2022-08-24 03:33:34', '2022-08-24 03:37:37', '2022-08-24', NULL),
+(36, 10, '299.00', '0.00', '62.79', '361.79', 'Tien Tai', 'Nguyen Tien', '798807540', 'nguyentientai10@gmail.com', 'dai hc nha trang', 'to 9 thi tran van gia', 'Van Gia', 'Khanh Hoa', 'Vietnam', '5700', 'ordered', 0, '2022-08-25 02:33:47', '2022-08-25 02:33:47', NULL, NULL),
+(38, 10, '599.00', '0.00', '125.79', '724.79', 'Tien Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmai.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'Van Gia', 'Khánh Hòa', 'Vietnam', '5700', 'ordered', 0, '2022-08-25 02:49:24', '2022-08-25 02:49:24', NULL, NULL),
+(39, 10, '461.00', '0.00', '96.81', '557.81', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'Khánh Hòa', 'Vietnam', '6300', 'ordered', 0, '2022-08-25 03:09:05', '2022-08-25 03:09:05', NULL, NULL),
+(40, 10, '362.00', '0.00', '76.02', '438.02', 'Tien Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'Van Gia', 'Khánh Hòa', 'Vietnam', '5700', 'ordered', 0, '2022-08-25 03:12:35', '2022-08-25 03:12:35', NULL, NULL),
+(41, 7, '391.85', '69.15', '82.29', '474.14', 'Tien Tai', 'Nguyen Tien', '0798805741', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'Van Gia', 'Khánh Hòa', 'Vietnam', '5700', 'delivered', 0, '2022-08-29 02:08:57', '2022-08-29 02:10:00', '2022-08-29', '2022-08-29'),
+(42, 10, '500.00', '0.00', '105.00', '605.00', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '57000', 'ordered', 0, '2022-09-04 13:28:08', '2022-09-04 13:28:08', NULL, NULL),
+(43, 6, '123.00', '0.00', '25.83', '148.83', 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', 'to 9 thi tran van gia', 'khánh hòa', 'nha trang', 'Vietnam', '6300', 'ordered', 1, '2022-09-06 03:20:59', '2022-09-06 03:20:59', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -335,15 +339,27 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `product_id`, `order_id`, `price`, `quantity`, `created_at`, `updated_at`, `rstatus`, `options`) VALUES
-(16, 8, 15, '362.00', 1, '2022-08-11 01:42:32', '2022-08-11 01:43:26', 1, NULL),
-(17, 8, 16, '362.00', 1, '2022-08-15 06:53:07', '2022-08-15 06:53:07', 0, NULL),
 (27, 7, 26, '119.00', 2, '2022-08-16 03:37:06', '2022-08-16 03:37:06', 0, NULL),
 (28, 5, 27, '224.00', 1, '2022-08-16 04:04:20', '2022-08-16 04:04:20', 0, NULL),
 (29, 8, 27, '362.00', 1, '2022-08-16 04:04:20', '2022-08-16 04:04:20', 0, NULL),
 (30, 42, 28, '123.00', 1, '2022-08-18 09:33:15', '2022-08-18 09:33:15', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:2:{s:10:\"Colors 123\";s:5:\"black\";s:5:\"Sizes\";s:2:\"16\";}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
 (31, 44, 29, '500.00', 1, '2022-08-19 03:16:29', '2022-08-19 03:16:29', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
 (32, 44, 30, '500.00', 1, '2022-08-19 03:16:48', '2022-08-19 03:16:48', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
-(33, 6, 31, '338.00', 1, '2022-08-19 03:19:23', '2022-08-19 03:19:23', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}');
+(33, 6, 31, '338.00', 1, '2022-08-19 03:19:23', '2022-08-19 03:19:23', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(34, 5, 32, '224.00', 2, '2022-08-23 07:28:23', '2022-08-23 07:29:49', 1, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(35, 10, 33, '300.00', 1, '2022-08-23 08:12:11', '2022-08-23 08:15:45', 1, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(36, 13, 33, '299.00', 1, '2022-08-23 08:12:11', '2022-08-23 08:13:38', 1, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(37, 12, 34, '436.00', 1, '2022-08-23 09:09:47', '2022-08-23 09:15:30', 1, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(38, 42, 34, '123.00', 1, '2022-08-23 09:09:47', '2022-08-23 09:11:52', 1, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(39, 14, 35, '155.00', 1, '2022-08-24 03:33:34', '2022-08-24 03:33:34', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(40, 13, 36, '299.00', 1, '2022-08-25 02:33:47', '2022-08-25 02:33:47', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(41, 13, 38, '299.00', 1, '2022-08-25 02:49:24', '2022-08-25 02:49:24', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(42, 10, 38, '300.00', 1, '2022-08-25 02:49:24', '2022-08-25 02:49:24', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(43, 3, 39, '461.00', 1, '2022-08-25 03:09:05', '2022-08-25 03:09:05', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(44, 8, 40, '362.00', 1, '2022-08-25 03:12:35', '2022-08-25 03:12:35', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(45, 3, 41, '461.00', 1, '2022-08-29 02:08:57', '2022-08-29 02:08:57', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(46, 44, 42, '500.00', 1, '2022-09-04 13:28:08', '2022-09-04 13:28:08', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}'),
+(47, 39, 43, '123.00', 1, '2022-09-06 03:20:59', '2022-09-06 03:20:59', 0, 'O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}');
 
 -- --------------------------------------------------------
 
@@ -433,8 +449,8 @@ INSERT INTO `products` (`id`, `name`, `slug`, `short_description`, `description`
 (20, 'magnam laudantium praesentium voluptatem', 'magnam-laudantium-praesentium-voluptatem', 'Qui ducimus delectus modi et rerum exercitationem. Dolorem dolor suscipit facilis aliquid necessitatibus fuga. Officiis quaerat magnam dolor temporibus. Cupiditate cum laborum molestiae rerum.', 'Ex quis ad itaque dicta vitae. In incidunt sapiente itaque id qui quisquam. Aliquam et necessitatibus commodi aspernatur culpa sit molestiae recusandae. Aut numquam eveniet praesentium sed reprehenderit sed ipsa. Repellat nisi quis placeat quia aut molestias. Dolor omnis non et illo non id eius. Voluptas dolorum fugiat molestiae.', '171.00', NULL, 'DIGI470', 'instock', 0, 181, 'digital_4.jpg', NULL, 3, '2022-08-03 20:05:55', '2022-08-03 20:05:55', NULL),
 (21, 'delectus labore explicabo nihil', 'delectus-labore-explicabo-nihil', 'Nihil sed dolorum est eius voluptatem dignissimos ut. Soluta sint ducimus dolor qui consequatur. Perspiciatis placeat non quaerat qui ex explicabo quo.', 'Voluptas molestiae impedit quia voluptates cupiditate omnis ducimus. Est eos quis ab laboriosam hic aut. Praesentium aperiam minima cum velit nemo. Est voluptatum delectus ut dolor sint voluptas. Commodi assumenda eius voluptatem molestiae. Assumenda nobis distinctio saepe eius cum ratione deserunt. Hic sunt occaecati qui omnis totam. Dolorem consequatur ut nisi. Dolor nulla excepturi unde et laudantium.', '84.00', NULL, 'DIGI410', 'instock', 0, 100, 'digital_15.jpg', NULL, 3, '2022-08-03 20:05:55', '2022-08-03 20:05:55', NULL),
 (22, 'molestias accusantium omnis eum', 'molestias-accusantium-omnis-eum', 'Est similique ut quisquam quam. Reprehenderit aliquam commodi qui et quas omnis ut ullam. Et ipsam id vel vero. Hic cumque laudantium molestiae cum totam et aut.', 'Nisi vel iure aut. Est qui beatae aliquam esse. Repellendus dolorem voluptas placeat quod velit sunt. Sint libero animi eligendi qui. Labore eum ut reprehenderit ut aut doloribus autem. Neque odio non debitis ut. Qui autem fuga officiis veritatis molestias ut esse qui. Modi ad eligendi quis ab in voluptatem ratione. Soluta et nostrum doloribus fugit repellendus.', '320.00', NULL, 'DIGI406', 'instock', 0, 135, 'digital_20.jpg', NULL, 2, '2022-08-03 20:05:55', '2022-08-03 20:05:55', NULL),
-(39, 'asd', 'asd', 'asd', 'asd', '123.00', '123.00', '123', 'instock', 0, 123, '1660559176.jpg', ',16605589940.jpg,16605589941.jpg,16605589942.jpg,16605589943.jpg', 1, '2022-08-15 10:02:38', '2022-08-15 10:26:16', NULL),
-(42, 'Con chim non', 'con-chim-non', 'asdasd', 'asd', '123.00', '123.00', '123', 'instock', 0, 123, '1660809110.jpg', ',16608091100.jpg,16608091101.jpg,16608091102.jpg,16608091103.jpg', 60, '2022-08-18 07:51:50', '2022-08-18 07:51:50', NULL),
+(39, 'saw machine', 'saw-machine', 'saw machine verry good production made in vietnames', 'saw machine verry good production made in vietnames', '123.00', '123.00', '123', 'instock', 0, 123, '1660559176.jpg', ',16605589940.jpg,16605589941.jpg,16605589942.jpg,16605589943.jpg', 1, '2022-08-15 10:02:38', '2022-09-06 03:16:01', NULL),
+(42, 'toy game', 'toy-game', 'toy production made in china', 'toy production made in china', '123.00', '123.00', '123', 'instock', 1, 123, '1660809110.jpg', ',16608091100.jpg,16608091101.jpg,16608091102.jpg,16608091103.jpg', 60, '2022-08-18 07:51:50', '2022-09-06 03:17:02', NULL),
 (44, 'Camera', 'camera', 'A camera is verry good', 'A camera is an optical instrument that captures a visual image. At a basic level, cameras consist of sealed boxes (the camera body), with a small hole (the aperture) that allows light through to capture an image on a light-sensitive surface (usually a digital sensor or photographic film).', '500.00', '400.00', 'CMR-1', 'instock', 1, 12, '1660818679.jpg', ',16608186790.jpg,16608186791.jpg,16608186792.jpg,16608186793.jpg', 62, '2022-08-18 10:31:19', '2022-08-18 10:35:31', 12),
 (45, 'SURFACE PRO 8', 'surface-pro-8', 'SURFACE PRO 8  | CORE I5 / RAM 8GB / SSD 512GB', '- CPU	 Intel® Core™ i5-1135G7\n- Card đồ họa	 Intel® Iris® Xe Graphics\n- Bộ nhớ trong	 512 GB SSD\n- RAM	 8 GB\n- Kích thước màn hình	 13” PixelSense™ Flow Display\n- Độ phân giải	 2880 x 1920 (267 PPI)\n- Trọng lượng	 0.891 kg', '234.00', '234.00', 'LT-1', 'instock', 0, 50, '1660819521.jpg', ',16608195210.jpg', 64, '2022-08-18 10:45:21', '2022-08-18 10:45:21', 13);
 
@@ -487,7 +503,7 @@ CREATE TABLE `profiles` (
 
 INSERT INTO `profiles` (`id`, `user_id`, `image`, `mobile`, `line1`, `line2`, `city`, `province`, `country`, `zipcode`, `created_at`, `updated_at`) VALUES
 (1, 7, '1660793880.jpg', '0798807541', 'Nha Trang12', 'Van Gia', 'khánh hòa', '6300', 'Vietnam', 'khanh hòa', '2022-08-08 01:23:11', '2022-08-18 03:38:00'),
-(2, 10, '1660705535.jpg', '0798805741', 'Tổ 9 Thị Trấn Vạn Giã', 'Đại học Nha Trang', 'Khánh Hòa', '79-V1-44937', 'Vietnam', '63000', '2022-08-16 09:09:20', '2022-08-17 03:05:35'),
+(2, 10, '1661241332.jpg', '0798805741', 'Tổ 9 Thị Trấn Vạn Giã', 'Đại học Nha Trang', 'Khánh Hòa', '79-V1-44937', 'Vietnam', '63000', '2022-08-16 09:09:20', '2022-08-23 07:55:32'),
 (3, 8, '1660646428.jpg', '0798807541', 'Nha Trang', 'Van Gia', 'khánh hòa', '6300', 'Vietnam', 'khanh hòa', '2022-08-16 10:39:19', '2022-08-16 10:40:28');
 
 -- --------------------------------------------------------
@@ -510,7 +526,11 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `rating`, `comment`, `order_item_id`, `created_at`, `updated_at`) VALUES
-(2, 3, 'Beautiful tivi', 16, '2022-08-11 01:43:26', '2022-08-11 01:43:26');
+(3, 4, 'Rat dep luon nha  admin oi', 34, '2022-08-23 07:29:49', '2022-08-23 07:29:49'),
+(4, 5, 'Màu này rất đẹp nha hihi', 36, '2022-08-23 08:13:33', '2022-08-23 08:13:33'),
+(6, 2, 'Màu này hơi xấu nha shop', 35, '2022-08-23 08:15:45', '2022-08-23 08:15:45'),
+(7, 5, 'Good Chop Admin Tai Heo', 38, '2022-08-23 09:11:52', '2022-08-23 09:11:52'),
+(8, 3, 'TV is so big it makes me uncomfortable', 37, '2022-08-23 09:15:30', '2022-08-23 09:15:30');
 
 -- --------------------------------------------------------
 
@@ -531,7 +551,7 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id`, `sale_date`, `status`, `created_at`, `updated_at`) VALUES
-(1, '2022-08-19 04:09:09', 1, NULL, '2022-08-18 02:57:39');
+(1, '2022-09-15 04:09:09', 1, NULL, '2022-09-06 03:19:44');
 
 -- --------------------------------------------------------
 
@@ -553,9 +573,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('h8JA3x50Xn9vJk7PkGcOC4FrQSh4WgLwSu8faPHn', 7, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36', 'YTo4OntzOjY6Il90b2tlbiI7czo0MDoiV0J5ZkxiUG4xVG1aakdjd2hjdHFtb0M2OE9qcEw1MjQxb3dYNWR1cyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fXM6NDoibGluayI7czoyMjoiaHR0cDovL2xvY2FsaG9zdDo4MDAwLyI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NztzOjQ6ImNhcnQiO2E6Mjp7czo4OiJ3aXNobGlzdCI7TzoyOToiSWxsdW1pbmF0ZVxTdXBwb3J0XENvbGxlY3Rpb24iOjI6e3M6ODoiACoAaXRlbXMiO2E6NDp7czozMjoiMDI3YzkxMzQxZmQ1Y2Y0ZDI1NzliNDljNGI2YTkwZGEiO086MzI6Ikdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtIjo5OntzOjU6InJvd0lkIjtzOjMyOiIwMjdjOTEzNDFmZDVjZjRkMjU3OWI0OWM0YjZhOTBkYSI7czoyOiJpZCI7aToxO3M6MzoicXR5IjtpOjE7czo0OiJuYW1lIjtzOjI4OiJzYXBpZW50ZSBudWxsYSB2b2x1cHRhdGVtIGV0IjtzOjU6InByaWNlIjtkOjgzO3M6Nzoib3B0aW9ucyI7TzozOToiR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW1PcHRpb25zIjoyOntzOjg6IgAqAGl0ZW1zIjthOjA6e31zOjI4OiIAKgBlc2NhcGVXaGVuQ2FzdGluZ1RvU3RyaW5nIjtiOjA7fXM6NDk6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBhc3NvY2lhdGVkTW9kZWwiO3M6MTk6IkFwcFxNb2RlbHNcUHJvZHVjdHMiO3M6NDE6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQB0YXhSYXRlIjtpOjIxO3M6NDE6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBpc1NhdmVkIjtiOjA7fXM6MzI6ImE3NzViYWM5Y2ZmN2RlYzJiOTg0ZTAyM2I5NTIwNmFhIjtPOjMyOiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbSI6OTp7czo1OiJyb3dJZCI7czozMjoiYTc3NWJhYzljZmY3ZGVjMmI5ODRlMDIzYjk1MjA2YWEiO3M6MjoiaWQiO2k6MztzOjM6InF0eSI7aToxO3M6NDoibmFtZSI7czozMDoiaW1wZWRpdCBjb25zZXF1dW50dXIgb3B0aW8gYXV0IjtzOjU6InByaWNlIjtkOjQ2MTtzOjc6Im9wdGlvbnMiO086Mzk6Ikdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtT3B0aW9ucyI6Mjp7czo4OiIAKgBpdGVtcyI7YTowOnt9czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO31zOjQ5OiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AYXNzb2NpYXRlZE1vZGVsIjtzOjE5OiJBcHBcTW9kZWxzXFByb2R1Y3RzIjtzOjQxOiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AdGF4UmF0ZSI7aToyMTtzOjQxOiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AaXNTYXZlZCI7YjowO31zOjMyOiJlZmIyNmUyYzZhYjZiZDRkMTMyMzI4ODkyMzUyMmQ0ZSI7TzozMjoiR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0iOjk6e3M6NToicm93SWQiO3M6MzI6ImVmYjI2ZTJjNmFiNmJkNGQxMzIzMjg4OTIzNTIyZDRlIjtzOjI6ImlkIjtpOjQ7czozOiJxdHkiO2k6MTtzOjQ6Im5hbWUiO3M6Mjk6InV0IHJlcHJlaGVuZGVyaXQgaXBzYSB0ZW1wb3JhIjtzOjU6InByaWNlIjtkOjIzNztzOjc6Im9wdGlvbnMiO086Mzk6Ikdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtT3B0aW9ucyI6Mjp7czo4OiIAKgBpdGVtcyI7YTowOnt9czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO31zOjQ5OiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AYXNzb2NpYXRlZE1vZGVsIjtzOjE5OiJBcHBcTW9kZWxzXFByb2R1Y3RzIjtzOjQxOiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AdGF4UmF0ZSI7aToyMTtzOjQxOiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AaXNTYXZlZCI7YjowO31zOjMyOiIzNzBkMDg1ODUzNjBmNWM1NjhiMThkMWYyZTRjYTFkZiI7TzozMjoiR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0iOjk6e3M6NToicm93SWQiO3M6MzI6IjM3MGQwODU4NTM2MGY1YzU2OGIxOGQxZjJlNGNhMWRmIjtzOjI6ImlkIjtpOjI7czozOiJxdHkiO2k6MTtzOjQ6Im5hbWUiO3M6MjE6ImV0IGNvcnBvcmlzIG5vbiBzYWVwZSI7czo1OiJwcmljZSI7ZDo0MDE7czo3OiJvcHRpb25zIjtPOjM5OiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbU9wdGlvbnMiOjI6e3M6ODoiACoAaXRlbXMiO2E6MDp7fXM6Mjg6IgAqAGVzY2FwZVdoZW5DYXN0aW5nVG9TdHJpbmciO2I6MDt9czo0OToiAEdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtAGFzc29jaWF0ZWRNb2RlbCI7czoxOToiQXBwXE1vZGVsc1xQcm9kdWN0cyI7czo0MToiAEdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtAHRheFJhdGUiO2k6MjE7czo0MToiAEdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtAGlzU2F2ZWQiO2I6MDt9fXM6Mjg6IgAqAGVzY2FwZVdoZW5DYXN0aW5nVG9TdHJpbmciO2I6MDt9czo0OiJjYXJ0IjtPOjI5OiJJbGx1bWluYXRlXFN1cHBvcnRcQ29sbGVjdGlvbiI6Mjp7czo4OiIAKgBpdGVtcyI7YToxOntzOjMyOiJhNzc1YmFjOWNmZjdkZWMyYjk4NGUwMjNiOTUyMDZhYSI7TzozMjoiR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0iOjk6e3M6NToicm93SWQiO3M6MzI6ImE3NzViYWM5Y2ZmN2RlYzJiOTg0ZTAyM2I5NTIwNmFhIjtzOjI6ImlkIjtpOjM7czozOiJxdHkiO2k6MTtzOjQ6Im5hbWUiO3M6MzA6ImltcGVkaXQgY29uc2VxdXVudHVyIG9wdGlvIGF1dCI7czo1OiJwcmljZSI7ZDo0NjE7czo3OiJvcHRpb25zIjtPOjM5OiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbU9wdGlvbnMiOjI6e3M6ODoiACoAaXRlbXMiO2E6MDp7fXM6Mjg6IgAqAGVzY2FwZVdoZW5DYXN0aW5nVG9TdHJpbmciO2I6MDt9czo0OToiAEdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtAGFzc29jaWF0ZWRNb2RlbCI7czoxOToiQXBwXE1vZGVsc1xQcm9kdWN0cyI7czo0MToiAEdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtAHRheFJhdGUiO2k6MjE7czo0MToiAEdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtAGlzU2F2ZWQiO2I6MDt9fXM6Mjg6IgAqAGVzY2FwZVdoZW5DYXN0aW5nVG9TdHJpbmciO2I6MDt9fXM6NjoiY291cG9uIjthOjQ6e3M6NDoiY29kZSI7czo2OiJPRkYxMDAiO3M6NDoidHlwZSI7czo1OiJmaXhlZCI7czo1OiJ2YWx1ZSI7czo2OiIxMDAuMDAiO3M6MTA6ImNhcnRfdmFsdWUiO3M6NjoiMTAwLjAwIjt9czo4OiJjaGVja291dCI7YTo0OntzOjg6ImRpc2NvdW50IjtzOjY6IjEwMC4wMCI7czo4OiJzdWJ0b3RhbCI7ZDozNjE7czozOiJ0YXgiO2Q6NzUuODE7czo1OiJ0b3RhbCI7ZDo0MzYuODE7fX0=', 1660879757),
-('HuWMxdbShhG64RYEPrVMIWZnDU5NxiKZNF4evMoA', 6, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiTGFDMDJWMG0yMGpQTHdIZXJLeXZGTk01cFlyWFpobVliMHNxYWVMQSI7czo0OiJsaW5rIjtzOjIxOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM0OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYWRtaW4vb3JkZXJzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MTp7aTowO3M6MTM6Im9yZGVyX21lc3NhZ2UiO31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjY7czo0OiJjYXJ0IjthOjI6e3M6NDoiY2FydCI7TzoyOToiSWxsdW1pbmF0ZVxTdXBwb3J0XENvbGxlY3Rpb24iOjI6e3M6ODoiACoAaXRlbXMiO2E6MDp7fXM6Mjg6IgAqAGVzY2FwZVdoZW5DYXN0aW5nVG9TdHJpbmciO2I6MDt9czo4OiJ3aXNobGlzdCI7TzoyOToiSWxsdW1pbmF0ZVxTdXBwb3J0XENvbGxlY3Rpb24iOjI6e3M6ODoiACoAaXRlbXMiO2E6MDp7fXM6Mjg6IgAqAGVzY2FwZVdoZW5DYXN0aW5nVG9TdHJpbmciO2I6MDt9fXM6NToidXR5cGUiO3M6MzoiQURNIjt9', 1660879323),
-('ov9pJRrCP8I7mbvbQKmARsEXhNImFgxPFAmcWl01', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSGFtUXR1SW9oYXlnQWJCcU85NGt5ZkxWRHlFcEpwbHg3VEM5T3J6byI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hdXRoL2ZhY2Vib29rIjt9czo0OiJsaW5rIjtzOjIyOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvIjtzOjU6InN0YXRlIjtzOjQwOiJFSmd2bmJ3Yjk2bXpSbGdKN1NLVXBWdGMwWG5ZZU9JRGRMY09PWE5yIjt9', 1660875883);
+('nXx9skggiRwvagRdLxBWNzOcpAr80dZrUndzUzhN', 7, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiZVRXU2hWR25MUVY3U1RHalNxdE9TS1RwNWZCSUlrYTBybml4NEJnZyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL2NoZWNrb3V0Ijt9czo0OiJsaW5rIjtzOjIyOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvIjtzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo3O3M6NDoiY2FydCI7YToyOntzOjQ6ImNhcnQiO086Mjk6IklsbHVtaW5hdGVcU3VwcG9ydFxDb2xsZWN0aW9uIjoyOntzOjg6IgAqAGl0ZW1zIjthOjE6e3M6MzI6ImE3NzViYWM5Y2ZmN2RlYzJiOTg0ZTAyM2I5NTIwNmFhIjtPOjMyOiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbSI6OTp7czo1OiJyb3dJZCI7czozMjoiYTc3NWJhYzljZmY3ZGVjMmI5ODRlMDIzYjk1MjA2YWEiO3M6MjoiaWQiO2k6MztzOjM6InF0eSI7aToxO3M6NDoibmFtZSI7czozMDoiaW1wZWRpdCBjb25zZXF1dW50dXIgb3B0aW8gYXV0IjtzOjU6InByaWNlIjtkOjEyMDtzOjc6Im9wdGlvbnMiO086Mzk6Ikdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtT3B0aW9ucyI6Mjp7czo4OiIAKgBpdGVtcyI7YTowOnt9czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO31zOjQ5OiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AYXNzb2NpYXRlZE1vZGVsIjtzOjE5OiJBcHBcTW9kZWxzXFByb2R1Y3RzIjtzOjQxOiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AdGF4UmF0ZSI7aToyMTtzOjQxOiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AaXNTYXZlZCI7YjowO319czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO31zOjg6Indpc2hsaXN0IjtPOjI5OiJJbGx1bWluYXRlXFN1cHBvcnRcQ29sbGVjdGlvbiI6Mjp7czo4OiIAKgBpdGVtcyI7YTo0OntzOjMyOiIwMjdjOTEzNDFmZDVjZjRkMjU3OWI0OWM0YjZhOTBkYSI7TzozMjoiR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0iOjk6e3M6NToicm93SWQiO3M6MzI6IjAyN2M5MTM0MWZkNWNmNGQyNTc5YjQ5YzRiNmE5MGRhIjtzOjI6ImlkIjtpOjE7czozOiJxdHkiO2k6MTtzOjQ6Im5hbWUiO3M6Mjg6InNhcGllbnRlIG51bGxhIHZvbHVwdGF0ZW0gZXQiO3M6NToicHJpY2UiO2Q6ODM7czo3OiJvcHRpb25zIjtPOjM5OiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbU9wdGlvbnMiOjI6e3M6ODoiACoAaXRlbXMiO2E6MDp7fXM6Mjg6IgAqAGVzY2FwZVdoZW5DYXN0aW5nVG9TdHJpbmciO2I6MDt9czo0OToiAEdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtAGFzc29jaWF0ZWRNb2RlbCI7czoxOToiQXBwXE1vZGVsc1xQcm9kdWN0cyI7czo0MToiAEdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtAHRheFJhdGUiO2k6MjE7czo0MToiAEdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtAGlzU2F2ZWQiO2I6MDt9czozMjoiYTc3NWJhYzljZmY3ZGVjMmI5ODRlMDIzYjk1MjA2YWEiO086MzI6Ikdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtIjo5OntzOjU6InJvd0lkIjtzOjMyOiJhNzc1YmFjOWNmZjdkZWMyYjk4NGUwMjNiOTUyMDZhYSI7czoyOiJpZCI7aTozO3M6MzoicXR5IjtpOjE7czo0OiJuYW1lIjtzOjMwOiJpbXBlZGl0IGNvbnNlcXV1bnR1ciBvcHRpbyBhdXQiO3M6NToicHJpY2UiO2Q6NDYxO3M6Nzoib3B0aW9ucyI7TzozOToiR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW1PcHRpb25zIjoyOntzOjg6IgAqAGl0ZW1zIjthOjA6e31zOjI4OiIAKgBlc2NhcGVXaGVuQ2FzdGluZ1RvU3RyaW5nIjtiOjA7fXM6NDk6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBhc3NvY2lhdGVkTW9kZWwiO3M6MTk6IkFwcFxNb2RlbHNcUHJvZHVjdHMiO3M6NDE6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQB0YXhSYXRlIjtpOjIxO3M6NDE6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBpc1NhdmVkIjtiOjA7fXM6MzI6ImVmYjI2ZTJjNmFiNmJkNGQxMzIzMjg4OTIzNTIyZDRlIjtPOjMyOiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbSI6OTp7czo1OiJyb3dJZCI7czozMjoiZWZiMjZlMmM2YWI2YmQ0ZDEzMjMyODg5MjM1MjJkNGUiO3M6MjoiaWQiO2k6NDtzOjM6InF0eSI7aToxO3M6NDoibmFtZSI7czoyOToidXQgcmVwcmVoZW5kZXJpdCBpcHNhIHRlbXBvcmEiO3M6NToicHJpY2UiO2Q6MjM3O3M6Nzoib3B0aW9ucyI7TzozOToiR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW1PcHRpb25zIjoyOntzOjg6IgAqAGl0ZW1zIjthOjA6e31zOjI4OiIAKgBlc2NhcGVXaGVuQ2FzdGluZ1RvU3RyaW5nIjtiOjA7fXM6NDk6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBhc3NvY2lhdGVkTW9kZWwiO3M6MTk6IkFwcFxNb2RlbHNcUHJvZHVjdHMiO3M6NDE6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQB0YXhSYXRlIjtpOjIxO3M6NDE6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBpc1NhdmVkIjtiOjA7fXM6MzI6IjM3MGQwODU4NTM2MGY1YzU2OGIxOGQxZjJlNGNhMWRmIjtPOjMyOiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbSI6OTp7czo1OiJyb3dJZCI7czozMjoiMzcwZDA4NTg1MzYwZjVjNTY4YjE4ZDFmMmU0Y2ExZGYiO3M6MjoiaWQiO2k6MjtzOjM6InF0eSI7aToxO3M6NDoibmFtZSI7czoyMToiZXQgY29ycG9yaXMgbm9uIHNhZXBlIjtzOjU6InByaWNlIjtkOjQwMTtzOjc6Im9wdGlvbnMiO086Mzk6Ikdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtT3B0aW9ucyI6Mjp7czo4OiIAKgBpdGVtcyI7YTowOnt9czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO31zOjQ5OiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AYXNzb2NpYXRlZE1vZGVsIjtzOjE5OiJBcHBcTW9kZWxzXFByb2R1Y3RzIjtzOjQxOiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AdGF4UmF0ZSI7aToyMTtzOjQxOiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AaXNTYXZlZCI7YjowO319czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO319czo4OiJjaGVja291dCI7YTo0OntzOjg6ImRpc2NvdW50IjtpOjA7czo4OiJzdWJ0b3RhbCI7czo2OiIxMjAuMDAiO3M6MzoidGF4IjtzOjU6IjI1LjIwIjtzOjU6InRvdGFsIjtzOjY6IjE0NS4yMCI7fX0=', 1662435786);
 
 -- --------------------------------------------------------
 
@@ -614,7 +632,9 @@ CREATE TABLE `shippings` (
 --
 
 INSERT INTO `shippings` (`id`, `order_id`, `firstname`, `lastname`, `mobile`, `email`, `line1`, `line2`, `city`, `province`, `country`, `zipcode`, `created_at`, `updated_at`) VALUES
-(5, 31, 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', NULL, 'khánh hòa', 'nha trang', 'Vietnam', '6300', '2022-08-19 03:19:23', '2022-08-19 03:19:23');
+(5, 31, 'Tai', 'Nguyen Tien', '0798807541', 'nguyentientai9@gmail.com', 'to 9 thi tran van gia', NULL, 'khánh hòa', 'nha trang', 'Vietnam', '6300', '2022-08-19 03:19:23', '2022-08-19 03:19:23'),
+(6, 34, 'Tien Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmail.com', 'to 9 thi tran van gia', NULL, 'khánh hòa', 'Khánh Hòa', 'Vietnam', '5700', '2022-08-23 09:09:47', '2022-08-23 09:09:47'),
+(7, 43, 'Tien Tai', 'Nguyen Tien', '0798807541', 'nguyentientai10@gmail.com', 'to 9 thi tran van gia', NULL, 'Van Gia', 'Khánh Hòa', 'Vietnam', '5700', '2022-09-06 03:20:59', '2022-09-06 03:20:59');
 
 -- --------------------------------------------------------
 
@@ -635,12 +655,12 @@ CREATE TABLE `shoppingcart` (
 --
 
 INSERT INTO `shoppingcart` (`identifier`, `instance`, `content`, `created_at`, `updated_at`) VALUES
-('admin@gmail.com', 'cart', 'O:29:\"Illuminate\\Support\\Collection\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}', '2022-08-19 02:49:13', NULL),
-('admin@gmail.com', 'wishlist', 'O:29:\"Illuminate\\Support\\Collection\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}', '2022-08-19 02:49:13', NULL),
-('nguyentientai10@gmail.com', 'cart', 'O:29:\"Illuminate\\Support\\Collection\":2:{s:8:\"\0*\0items\";a:1:{s:32:\"468399581342505c47f4615b81bedaa9\";O:32:\"Gloudemans\\Shoppingcart\\CartItem\":9:{s:5:\"rowId\";s:32:\"468399581342505c47f4615b81bedaa9\";s:2:\"id\";i:5;s:3:\"qty\";i:1;s:4:\"name\";s:18:\"et adipisci aut ea\";s:5:\"price\";d:224;s:7:\"options\";O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}s:49:\"\0Gloudemans\\Shoppingcart\\CartItem\0associatedModel\";s:19:\"App\\Models\\Products\";s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0taxRate\";i:21;s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0isSaved\";b:0;}}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}', '2022-08-19 02:28:57', NULL),
-('nguyentientai10@gmail.com', 'wishlist', 'O:29:\"Illuminate\\Support\\Collection\":2:{s:8:\"\0*\0items\";a:1:{s:32:\"a775bac9cff7dec2b984e023b95206aa\";O:32:\"Gloudemans\\Shoppingcart\\CartItem\":9:{s:5:\"rowId\";s:32:\"a775bac9cff7dec2b984e023b95206aa\";s:2:\"id\";i:3;s:3:\"qty\";i:1;s:4:\"name\";s:30:\"impedit consequuntur optio aut\";s:5:\"price\";d:461;s:7:\"options\";O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}s:49:\"\0Gloudemans\\Shoppingcart\\CartItem\0associatedModel\";s:19:\"App\\Models\\Products\";s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0taxRate\";i:21;s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0isSaved\";b:0;}}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}', '2022-08-19 02:28:57', NULL),
-('user@gmail.com', 'cart', 'O:29:\"Illuminate\\Support\\Collection\":2:{s:8:\"\0*\0items\";a:1:{s:32:\"a775bac9cff7dec2b984e023b95206aa\";O:32:\"Gloudemans\\Shoppingcart\\CartItem\":9:{s:5:\"rowId\";s:32:\"a775bac9cff7dec2b984e023b95206aa\";s:2:\"id\";i:3;s:3:\"qty\";i:1;s:4:\"name\";s:30:\"impedit consequuntur optio aut\";s:5:\"price\";d:461;s:7:\"options\";O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}s:49:\"\0Gloudemans\\Shoppingcart\\CartItem\0associatedModel\";s:19:\"App\\Models\\Products\";s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0taxRate\";i:21;s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0isSaved\";b:0;}}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}', '2022-08-19 03:28:40', NULL),
-('user@gmail.com', 'wishlist', 'O:29:\"Illuminate\\Support\\Collection\":2:{s:8:\"\0*\0items\";a:4:{s:32:\"027c91341fd5cf4d2579b49c4b6a90da\";O:32:\"Gloudemans\\Shoppingcart\\CartItem\":9:{s:5:\"rowId\";s:32:\"027c91341fd5cf4d2579b49c4b6a90da\";s:2:\"id\";i:1;s:3:\"qty\";i:1;s:4:\"name\";s:28:\"sapiente nulla voluptatem et\";s:5:\"price\";d:83;s:7:\"options\";O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}s:49:\"\0Gloudemans\\Shoppingcart\\CartItem\0associatedModel\";s:19:\"App\\Models\\Products\";s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0taxRate\";i:21;s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0isSaved\";b:0;}s:32:\"a775bac9cff7dec2b984e023b95206aa\";O:32:\"Gloudemans\\Shoppingcart\\CartItem\":9:{s:5:\"rowId\";s:32:\"a775bac9cff7dec2b984e023b95206aa\";s:2:\"id\";i:3;s:3:\"qty\";i:1;s:4:\"name\";s:30:\"impedit consequuntur optio aut\";s:5:\"price\";d:461;s:7:\"options\";O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}s:49:\"\0Gloudemans\\Shoppingcart\\CartItem\0associatedModel\";s:19:\"App\\Models\\Products\";s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0taxRate\";i:21;s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0isSaved\";b:0;}s:32:\"efb26e2c6ab6bd4d1323288923522d4e\";O:32:\"Gloudemans\\Shoppingcart\\CartItem\":9:{s:5:\"rowId\";s:32:\"efb26e2c6ab6bd4d1323288923522d4e\";s:2:\"id\";i:4;s:3:\"qty\";i:1;s:4:\"name\";s:29:\"ut reprehenderit ipsa tempora\";s:5:\"price\";d:237;s:7:\"options\";O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}s:49:\"\0Gloudemans\\Shoppingcart\\CartItem\0associatedModel\";s:19:\"App\\Models\\Products\";s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0taxRate\";i:21;s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0isSaved\";b:0;}s:32:\"370d08585360f5c568b18d1f2e4ca1df\";O:32:\"Gloudemans\\Shoppingcart\\CartItem\":9:{s:5:\"rowId\";s:32:\"370d08585360f5c568b18d1f2e4ca1df\";s:2:\"id\";i:2;s:3:\"qty\";i:1;s:4:\"name\";s:21:\"et corporis non saepe\";s:5:\"price\";d:401;s:7:\"options\";O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}s:49:\"\0Gloudemans\\Shoppingcart\\CartItem\0associatedModel\";s:19:\"App\\Models\\Products\";s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0taxRate\";i:21;s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0isSaved\";b:0;}}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}', '2022-08-19 03:24:14', NULL);
+('admin@gmail.com', 'cart', 'O:29:\"Illuminate\\Support\\Collection\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}', '2022-09-06 03:21:07', NULL),
+('admin@gmail.com', 'wishlist', 'O:29:\"Illuminate\\Support\\Collection\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}', '2022-09-06 03:21:07', NULL),
+('nguyentientai10@gmail.com', 'cart', 'O:29:\"Illuminate\\Support\\Collection\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}', '2022-09-05 03:35:38', NULL),
+('nguyentientai10@gmail.com', 'wishlist', 'O:29:\"Illuminate\\Support\\Collection\":2:{s:8:\"\0*\0items\";a:1:{s:32:\"18d6934483b994fb9943b43b7d7646bf\";O:32:\"Gloudemans\\Shoppingcart\\CartItem\":9:{s:5:\"rowId\";s:32:\"18d6934483b994fb9943b43b7d7646bf\";s:2:\"id\";i:8;s:3:\"qty\";i:1;s:4:\"name\";s:30:\"corporis veniam animi corporis\";s:5:\"price\";d:362;s:7:\"options\";O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}s:49:\"\0Gloudemans\\Shoppingcart\\CartItem\0associatedModel\";s:19:\"App\\Models\\Products\";s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0taxRate\";i:21;s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0isSaved\";b:0;}}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}', '2022-09-05 03:35:31', NULL),
+('user@gmail.com', 'cart', 'O:29:\"Illuminate\\Support\\Collection\":2:{s:8:\"\0*\0items\";a:1:{s:32:\"a775bac9cff7dec2b984e023b95206aa\";O:32:\"Gloudemans\\Shoppingcart\\CartItem\":9:{s:5:\"rowId\";s:32:\"a775bac9cff7dec2b984e023b95206aa\";s:2:\"id\";i:3;s:3:\"qty\";i:1;s:4:\"name\";s:30:\"impedit consequuntur optio aut\";s:5:\"price\";d:120;s:7:\"options\";O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}s:49:\"\0Gloudemans\\Shoppingcart\\CartItem\0associatedModel\";s:19:\"App\\Models\\Products\";s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0taxRate\";i:21;s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0isSaved\";b:0;}}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}', '2022-09-06 03:37:26', NULL),
+('user@gmail.com', 'wishlist', 'O:29:\"Illuminate\\Support\\Collection\":2:{s:8:\"\0*\0items\";a:4:{s:32:\"027c91341fd5cf4d2579b49c4b6a90da\";O:32:\"Gloudemans\\Shoppingcart\\CartItem\":9:{s:5:\"rowId\";s:32:\"027c91341fd5cf4d2579b49c4b6a90da\";s:2:\"id\";i:1;s:3:\"qty\";i:1;s:4:\"name\";s:28:\"sapiente nulla voluptatem et\";s:5:\"price\";d:83;s:7:\"options\";O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}s:49:\"\0Gloudemans\\Shoppingcart\\CartItem\0associatedModel\";s:19:\"App\\Models\\Products\";s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0taxRate\";i:21;s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0isSaved\";b:0;}s:32:\"a775bac9cff7dec2b984e023b95206aa\";O:32:\"Gloudemans\\Shoppingcart\\CartItem\":9:{s:5:\"rowId\";s:32:\"a775bac9cff7dec2b984e023b95206aa\";s:2:\"id\";i:3;s:3:\"qty\";i:1;s:4:\"name\";s:30:\"impedit consequuntur optio aut\";s:5:\"price\";d:461;s:7:\"options\";O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}s:49:\"\0Gloudemans\\Shoppingcart\\CartItem\0associatedModel\";s:19:\"App\\Models\\Products\";s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0taxRate\";i:21;s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0isSaved\";b:0;}s:32:\"efb26e2c6ab6bd4d1323288923522d4e\";O:32:\"Gloudemans\\Shoppingcart\\CartItem\":9:{s:5:\"rowId\";s:32:\"efb26e2c6ab6bd4d1323288923522d4e\";s:2:\"id\";i:4;s:3:\"qty\";i:1;s:4:\"name\";s:29:\"ut reprehenderit ipsa tempora\";s:5:\"price\";d:237;s:7:\"options\";O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}s:49:\"\0Gloudemans\\Shoppingcart\\CartItem\0associatedModel\";s:19:\"App\\Models\\Products\";s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0taxRate\";i:21;s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0isSaved\";b:0;}s:32:\"370d08585360f5c568b18d1f2e4ca1df\";O:32:\"Gloudemans\\Shoppingcart\\CartItem\":9:{s:5:\"rowId\";s:32:\"370d08585360f5c568b18d1f2e4ca1df\";s:2:\"id\";i:2;s:3:\"qty\";i:1;s:4:\"name\";s:21:\"et corporis non saepe\";s:5:\"price\";d:401;s:7:\"options\";O:39:\"Gloudemans\\Shoppingcart\\CartItemOptions\":2:{s:8:\"\0*\0items\";a:0:{}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}s:49:\"\0Gloudemans\\Shoppingcart\\CartItem\0associatedModel\";s:19:\"App\\Models\\Products\";s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0taxRate\";i:21;s:41:\"\0Gloudemans\\Shoppingcart\\CartItem\0isSaved\";b:0;}}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}', '2022-09-06 03:31:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -693,14 +713,6 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`id`, `user_id`, `order_id`, `mode`, `status`, `created_at`, `updated_at`) VALUES
-(5, 7, 14, 'cod', 'pending', '2022-08-10 20:36:14', '2022-08-10 20:36:14'),
-(6, 7, 15, 'cod', 'pending', '2022-08-11 01:42:32', '2022-08-11 01:42:32'),
-(7, 8, 16, 'cod', 'pending', '2022-08-15 06:53:07', '2022-08-15 06:53:07'),
-(8, 7, 17, 'cod', 'pending', '2022-08-16 02:46:55', '2022-08-16 02:46:55'),
-(9, 7, 18, 'cod', 'pending', '2022-08-16 02:48:47', '2022-08-16 02:48:47'),
-(10, 7, 19, 'cod', 'pending', '2022-08-16 02:51:17', '2022-08-16 02:51:17'),
-(11, 7, 20, 'cod', 'pending', '2022-08-16 02:54:21', '2022-08-16 02:54:21'),
-(12, 7, 21, 'cod', 'pending', '2022-08-16 03:26:02', '2022-08-16 03:26:02'),
 (13, 7, 22, 'cod', 'pending', '2022-08-16 03:28:02', '2022-08-16 03:28:02'),
 (14, 7, 23, 'cod', 'pending', '2022-08-16 03:29:55', '2022-08-16 03:29:55'),
 (15, 7, 24, 'cod', 'pending', '2022-08-16 03:31:30', '2022-08-16 03:31:30'),
@@ -709,7 +721,18 @@ INSERT INTO `transactions` (`id`, `user_id`, `order_id`, `mode`, `status`, `crea
 (18, 7, 27, 'cod', 'pending', '2022-08-16 04:04:20', '2022-08-16 04:04:20'),
 (19, 7, 28, 'cod', 'pending', '2022-08-18 09:33:15', '2022-08-18 09:33:15'),
 (20, 7, 30, 'card', 'approved', '2022-08-19 03:16:52', '2022-08-19 03:16:52'),
-(21, 7, 31, 'card', 'approved', '2022-08-19 03:19:27', '2022-08-19 03:19:27');
+(21, 7, 31, 'card', 'approved', '2022-08-19 03:19:27', '2022-08-19 03:19:27'),
+(22, 10, 32, 'cod', 'pending', '2022-08-23 07:28:23', '2022-08-23 07:28:23'),
+(23, 10, 33, 'cod', 'pending', '2022-08-23 08:12:11', '2022-08-23 08:12:11'),
+(24, 10, 34, 'cod', 'pending', '2022-08-23 09:09:47', '2022-08-23 09:09:47'),
+(25, 10, 35, 'card', 'approved', '2022-08-24 03:33:38', '2022-08-24 03:33:38'),
+(26, 10, 36, 'cod', 'pending', '2022-08-25 02:33:47', '2022-08-25 02:33:47'),
+(27, 10, 38, 'cod', 'pending', '2022-08-25 02:49:24', '2022-08-25 02:49:24'),
+(28, 10, 39, 'card', 'approved', '2022-08-25 03:09:09', '2022-08-25 03:09:09'),
+(29, 10, 40, 'card', 'approved', '2022-08-25 03:12:39', '2022-08-25 03:12:39'),
+(30, 7, 41, 'card', 'approved', '2022-08-29 02:09:00', '2022-08-29 02:09:00'),
+(31, 10, 42, 'card', 'approved', '2022-09-04 13:28:11', '2022-09-04 13:28:11'),
+(32, 6, 43, 'cod', 'pending', '2022-09-06 03:20:59', '2022-09-06 03:20:59');
 
 -- --------------------------------------------------------
 
@@ -742,10 +765,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `user_name`, `phone`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `utype`, `created_at`, `updated_at`) VALUES
 (6, 'Tai Nguyen Tien', 'admin', 'Tai Nguyen Tien', 'admin@gmail.com', NULL, '$2y$10$jeOXaMDe2P.sS8Unta/W7OluKsmfLTw9yAHuV.CXr6pRs/9ggz83e', NULL, NULL, NULL, NULL, NULL, NULL, 'ADM', '2022-08-05 06:45:11', '2022-08-05 06:45:11'),
-(7, 'Tai Nguyen Tien', 'user@gmail.com', '0798805741', 'user@gmail.com', NULL, '$2y$10$qJDQb/1Mg7B9IVkXOXmpaeTCgDtpvtfJlzO0fOtFH7iiPqOutq16y', NULL, NULL, NULL, NULL, NULL, NULL, 'USR', '2022-08-08 01:21:42', '2022-08-11 03:21:11'),
-(8, 'Tai Nguyen Tien', 'nhanhauv1p', '0906252977', 'nguyentientai9@gmail.com', NULL, '$2y$10$1kfSo8GPf3flh7kWSNLukep79Ki1pfAOvcBCl9p8Wzkr3PqiXf.IS', NULL, NULL, NULL, 'mwlakUYNy2zLVEFdByI8kZkj80axSPCa7vPERU49cWmJbAtMC9wKOSVimoT9', NULL, NULL, 'USR', '2022-08-15 04:14:18', '2022-08-16 10:40:28'),
+(7, 'Tai Nguyen Tien', 'fdhhhdjd', '0798805741', 'user@gmail.com', NULL, '$2y$10$qJDQb/1Mg7B9IVkXOXmpaeTCgDtpvtfJlzO0fOtFH7iiPqOutq16y', NULL, NULL, NULL, NULL, NULL, NULL, 'USR', '2022-08-08 01:21:42', '2022-08-11 03:21:11'),
+(8, 'Tai Nguyen Tien', 'nhanhauv1p', '0906252977', 'nguyentientai9@gmail.com', NULL, '$2y$10$1kfSo8GPf3flh7kWSNLukep79Ki1pfAOvcBCl9p8Wzkr3PqiXf.IS', NULL, NULL, NULL, 'MbhT3Esy5aVDqgVsr590saM4EpWEjRq9ZowrbDbglUvkgxyNlo6deXsvHZfM', NULL, NULL, 'USR', '2022-08-15 04:14:18', '2022-08-16 10:40:28'),
 (9, 'asd', 'asdasd', '45646542123', 'asdasd@gmail.com', NULL, '$2y$10$Tq2xhVRF1ER4iUHFsU1tPO7vnfpySQ/i5MU8IpAL15vs7yS3jA.dy', NULL, NULL, NULL, NULL, NULL, NULL, 'USR', '2022-08-15 09:22:08', '2022-08-15 09:22:08'),
-(10, 'Nguyễn Tiến Tài', NULL, NULL, 'nguyentientai10@gmail.com', NULL, 'eyJpdiI6IlRjVktCaVF5MnV4UzMwbHBjamJJUFE9PSIsInZhbHVlIjoiWm9veW1PY0lVVXJDK0RlYU1jM0F2dDdnbmJIZXorRTg0SWlRaUNUTFZZcz0iLCJtYWMiOiJkMmJhY2VkODAxZDk4YTkxY2EyYWM4MjRjOTNjY2ZhYmMxY2Q2YTlkMWFjOGViMDQ0YzU2NjZkZmJlZjEzOTMxIiwidGFnIjoiIn0=', NULL, NULL, NULL, NULL, NULL, NULL, 'USR', '2022-08-16 09:06:23', '2022-08-17 03:02:12');
+(10, 'Nguyễn Tiến Tài', 'taideptrai', NULL, 'nguyentientai10@gmail.com', NULL, 'eyJpdiI6IlRjVktCaVF5MnV4UzMwbHBjamJJUFE9PSIsInZhbHVlIjoiWm9veW1PY0lVVXJDK0RlYU1jM0F2dDdnbmJIZXorRTg0SWlRaUNUTFZZcz0iLCJtYWMiOiJkMmJhY2VkODAxZDk4YTkxY2EyYWM4MjRjOTNjY2ZhYmMxY2Q2YTlkMWFjOGViMDQ0YzU2NjZkZmJlZjEzOTMxIiwidGFnIjoiIn0=', NULL, NULL, NULL, NULL, NULL, NULL, 'USR', '2022-08-16 09:06:23', '2022-08-24 02:48:47'),
+(11, 'main teacher edtech', NULL, NULL, 'edtech.main.teacher@gmail.com', NULL, 'eyJpdiI6IjZrYWVrcjlTeUM2OHZqYjBocWRSU0E9PSIsInZhbHVlIjoiNEJzMGdXRXZtcGxsZk8vdGFtYk5hNE9iRC9kK3h6QkcvNUlaVjVqT1hRZz0iLCJtYWMiOiIyZGIxMjczYTY0YzFhYjU1MmMxOWQ5NjczZWY5Njg0M2QzMjQ5MmY5MmVkYmUwMDc1NzFkYTc0MGUyZDQxNWYxIiwidGFnIjoiIn0=', NULL, NULL, NULL, NULL, NULL, NULL, 'USR', '2022-09-04 13:39:29', '2022-09-04 13:39:29');
 
 --
 -- Indexes for dumped tables
@@ -926,7 +950,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attribute_values`
 --
 ALTER TABLE `attribute_values`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -944,7 +968,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `coupons`
 --
 ALTER TABLE `coupons`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -974,13 +998,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1010,7 +1034,7 @@ ALTER TABLE `profiles`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `sales`
@@ -1028,7 +1052,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `shippings`
 --
 ALTER TABLE `shippings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `subcategories`
@@ -1040,13 +1064,13 @@ ALTER TABLE `subcategories`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

@@ -139,7 +139,7 @@ class AdminAddProductComponent extends Component
                 $attr_value->save();
             }
         }
-        Delete_cache('lproducts');
+        Delete_cache('lsliders');
         Delete_cache('popular_products');
 
         session()->flash('message', 'Product has been created successfully!');

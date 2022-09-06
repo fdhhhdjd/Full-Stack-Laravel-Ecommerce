@@ -17,8 +17,9 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="/shop" class="link">home</a></li>
-                <li class="item-link"><span>detail</span></li>
+                <li class="item-link"><a href="/shop" class="link">Home</a></li>
+                <li class="item-link"><a href="/shop" class="link">Detail</a></li>
+                <li class="item-link"><span>{{ $product->name }}</span></li>
             </ul>
         </div>
         <div class="row">
@@ -160,7 +161,6 @@
                     <div class="advance-info">
                         <div class="tab-control normal">
                             <a href="#description" class="tab-control-item active">description</a>
-                            <a href="#add_infomation" class="tab-control-item">Addtional Infomation</a>
                             <a href="#review" class="tab-control-item">Reviews</a>
                         </div>
                         <div class="tab-contents">
@@ -312,49 +312,52 @@
             </div>
             <!--end sitebar-->
 
-            <div class="single-advance-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="wrap-show-advance-info-box style-1 box-in-site">
-                    <h3 class="title-box">Related Products</h3>
-                    <div class="wrap-products">
-                        <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5"
-                            data-loop="false" data-nav="true" data-dots="false"
-                            data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}'>
-                            @foreach ($related_products as $r_product)
-                                <div class="product product-style-2 equal-elem ">
-                                    <div class="product-thumnail">
-                                        <a href="{{ route('product.details', ['slug' => $r_product->slug]) }}"
-                                            title="{{ $r_product->name }}">
-                                            <figure><img
-                                                    src="{{ asset('assets/images/products') }}/{{ $r_product->image }}"
-                                                    width="214" height="214" alt="{{ $r_product->name }}">
-                                            </figure>
-                                        </a>
-                                        <div class="group-flash">
-                                            <span class="flash-item new-label">new</span>
+            <!--end container-->
+            @if ($related_products->count() > 0)
+                <div class="single-advance-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wrap-show-advance-info-box style-1 box-in-site">
+                        <h3 class="title-box">Related Products</h3>
+                        <div class="wrap-products">
+                            <div class="products slide-carousel owl-carousel style-nav-1 equal-container"
+                                data-items="5" data-loop="false" data-nav="true" data-dots="false"
+                                data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}'>
+                                @foreach ($related_products as $r_product)
+                                    <div class="product product-style-2 equal-elem ">
+                                        <div class="product-thumnail">
+                                            <a href="{{ route('product.details', ['slug' => $r_product->slug]) }}"
+                                                title="{{ $r_product->name }}">
+                                                <figure><img
+                                                        src="{{ asset('assets/images/products') }}/{{ $r_product->image }}"
+                                                        width="214" height="214" alt="{{ $r_product->name }}">
+                                                </figure>
+                                            </a>
+                                            <div class="group-flash">
+                                                <span class="flash-item new-label">new</span>
+                                            </div>
+                                            <div class="wrap-btn">
+                                                <a href="#" class="function-link">quick view</a>
+                                            </div>
                                         </div>
-                                        <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
+                                        <div class="product-info">
+                                            <a href="{{ route('product.details', ['slug' => $r_product->slug]) }}"
+                                                class="product-name"><span>{{ $r_product->name }}</span></a>
+                                            <div class="wrap-price"><span
+                                                    class="product-price">{{ $r_product->regular_price }}</span></div>
                                         </div>
                                     </div>
-                                    <div class="product-info">
-                                        <a href="{{ route('product.details', ['slug' => $r_product->slug]) }}"
-                                            class="product-name"><span>{{ $r_product->name }}</span></a>
-                                        <div class="wrap-price"><span
-                                                class="product-price">{{ $r_product->regular_price }}</span></div>
-                                    </div>
-                                </div>
-                            @endforeach
+                                @endforeach
 
 
-                            <!--End wrap-products-->
+                                <!--End wrap-products-->
+                            </div>
                         </div>
+
                     </div>
+                    <!--end row-->
 
                 </div>
-                <!--end row-->
 
-            </div>
-            <!--end container-->
+            @endif
         </div>
     </div>
 

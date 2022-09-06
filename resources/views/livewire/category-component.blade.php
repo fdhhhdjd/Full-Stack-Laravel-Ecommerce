@@ -2,8 +2,8 @@
     <div class="container">
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>Product Category</span></li>
+                <li class="item-link"><a href="/shop" class="link">Home</a></li>
+                <li class="item-link"><a href="/shop" class="link">Category</a></li>
                 <li class="item-link"><span>{{ $category_name }}</span></li>
 
             </ul>

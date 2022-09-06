@@ -50,6 +50,7 @@ class EditHomeSliderComponent extends Component
         }
         $slider->save();
         session()->flash('message', 'Slider has been edit successfully!');
+        Delete_cache('lsliders');
         return redirect()->route('admin.homeslider');
     }
     public function render()

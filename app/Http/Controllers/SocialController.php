@@ -25,7 +25,8 @@ class SocialController extends Controller
             $user = User::where('email', $users->email)->first();
             if (isset($user)) {
                 Auth::login($user);
-                return redirect()->route('/');
+                return redirect(session('link'));
+                // return redirect()->route('/');
             } else {
                 $newUser = User::create([
                     'name' => $users->name,

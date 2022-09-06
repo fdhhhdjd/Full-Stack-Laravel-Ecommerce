@@ -2,6 +2,7 @@
     <h2 class="widget-title">Popular Products</h2>
     <div class="widget-content">
         <ul class="products">
+            {{-- {{ dd($popular_products_list) }} --}}
             @foreach ($popular_products_list as $p_product)
                 <li class="product-item">
                     <div class="product product-widget-style">
@@ -13,7 +14,8 @@
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="#" class="product-name"><span>{{ $p_product->name }}</span></a>
+                            <a href="{{ route('product.details', ['slug' => $p_product->slug]) }}"
+                                class="product-name"><span>{{ $p_product->name }}</span></a>
                             <div class="wrap-price"><span class="product-price">{{ $p_product->regular_price }}</span>
                             </div>
                         </div>

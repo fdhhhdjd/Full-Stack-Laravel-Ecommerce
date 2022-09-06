@@ -1,3 +1,8 @@
+@php
+use App\Models\Setting;
+$Setting = Setting::find(1);
+@endphp
+
 <footer id="footer">
     <div class="wrap-footer-content footer-style-1">
 
@@ -57,16 +62,15 @@
                                     <ul>
                                         <li>
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <p class="contact-txt">45 Grand Central Terminal New York,NY 1017
-                                                United State USA</p>
+                                            <p class="contact-txt">{{ $Setting->address }}</p>
                                         </li>
                                         <li>
                                             <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <p class="contact-txt">(+84) 798805741 - (+84) 984913741</p>
+                                            <p class="contact-txt">{{ $Setting->phone }} - {{ $Setting->phone2 }}</p>
                                         </li>
                                         <li>
                                             <i class="fa fa-envelope" aria-hidden="true"></i>
-                                            <p class="contact-txt">Contact@yourcompany.com</p>
+                                            <p class="contact-txt">{{ $Setting->email }}</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -81,7 +85,8 @@
                             <div class="item-content">
                                 <div class="wrap-hotline-footer">
                                     <span class="desc">Call Us toll Free</span>
-                                    <b class="phone-number">(+84) 798805741 - (+84) 984913741</b>
+                                    <b class="phone-number">
+                                        {{ $Setting->phone }} - {{ $Setting->phone2 }}</b>
                                 </div>
                             </div>
                         </div>

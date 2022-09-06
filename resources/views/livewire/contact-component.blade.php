@@ -1,3 +1,7 @@
+@php
+use App\Models\Setting;
+$Setting = Setting::find(1);
+@endphp
 <div>
     <main id="main" class="main-site left-sidebar">
         <div class="container">
@@ -68,7 +72,7 @@
                                         <i class="fa fa-envelope" aria-hidden="true"></i>
                                         <div class="right-info">
                                             <b>Email</b>
-                                            <p>nguyentientai10@gmail.com</p>
+                                            <p> {{ $Setting->email }}</p>
                                         </div>
                                     </div>
 
@@ -76,7 +80,7 @@
                                         <i class="fa fa-phone" aria-hidden="true"></i>
                                         <div class="right-info">
                                             <b>Phone</b>
-                                            <p>0798805741</p>
+                                            <p> {{ $Setting->phone }}</p>
                                         </div>
                                     </div>
 
@@ -85,7 +89,7 @@
                                         <div class="right-info">
                                             <b>Mail Office</b>
                                             <p>
-                                                Tổ dân phố số 9,Thị Trấn Vạn Giã<br />Khánh Hòa
+                                                {{ $Setting->address }}<br /> {{ $Setting->map }}
                                             </p>
                                         </div>
                                     </div>

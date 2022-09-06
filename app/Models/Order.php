@@ -23,6 +23,6 @@ class Order extends Model
     }
     public function transaction()
     {
-        return $this->hasOne(transaction::class);
+        return $this->hasOne(Transaction::class);
     }
 }

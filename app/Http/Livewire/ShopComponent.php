@@ -8,6 +8,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Gloudemans\Shoppingcart\Facades\Cart as Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ShopComponent extends Component
 {
@@ -16,6 +17,7 @@ class ShopComponent extends Component
 
     public $min_price;
     public $max_price;
+
     public function mount()
     {
         $this->sorting = 'default';
@@ -37,6 +39,7 @@ class ShopComponent extends Component
         Cart::instance('wishlist')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Products');
         //Refetch Page
         $this->emitTo('wishlist-count-component', 'refreshComponent');
+        return;
     }
     public function removeToWishlist($product_id)
     {
@@ -49,24 +52,9 @@ class ShopComponent extends Component
             }
         }
     }
-
-
-
     use WithPagination;
     public function render()
     {
-
-        if ($this->sorting == 'date') {
-            // $products = Products::orderBy('created_at', 'DESC')->paginate($this->pagesize);
-            $products = Products::whereBetween('regular_price', [$this->min_price, $this->max_price])->orderBy('created_at', 'DESC')->paginate($this->pagesize);
-        } else if ($this->sorting == 'price') {
-            $products = Products::whereBetween('regular_price', [$this->min_price, $this->max_price])->orderBy('regular_price', 'ASC')->paginate($this->pagesize);
-        } else if ($this->sorting == 'price-desc') {
-            $products = Products::whereBetween('regular_price', [$this->min_price, $this->max_price])->orderBy('regular_price', 'DESC')->paginate($this->pagesize);
-        } else {
-            // $products = Products::paginate(12);
-            $products = Products::whereBetween('regular_price', [$this->min_price, $this->max_price])->paginate($this->pagesize);
-        }
         $categories = Category::all();
 
         //Cart Save USer
@@ -81,6 +69,19 @@ class ShopComponent extends Component
             $popular_products = Products::where('featured', 1)->limit(4)->get();
             SetCache('popular_products', $popular_products);
         }
+
+        if ($this->sorting == 'date') {
+            // $products = Products::orderBy('created_at', 'DESC')->paginate($this->pagesize);
+            $products = Products::whereBetween('regular_price', [$this->min_price, $this->max_price])->orderBy('created_at')->paginate($this->pagesize);
+        } else if ($this->sorting == 'price') {
+            $products = Products::whereBetween('regular_price', [$this->min_price, $this->max_price])->oldest()->orderBy('regular_price', 'asc')->paginate($this->pagesize);
+        } else if ($this->sorting == 'price-desc') {
+            $products = Products::whereBetween('regular_price', [$this->min_price, $this->max_price])->orderBy('regular_price', 'desc')->paginate($this->pagesize);
+        } else {
+            // $products = Products::paginate(12);
+            $products = Products::whereBetween('regular_price', [$this->min_price, $this->max_price])->paginate($this->pagesize);
+        }
+
         return view('livewire.shop-component', ['products' => $products, 'popular_products' => $popular_products, "categories" => $categories])->layout('layouts.base');
     }
 }

@@ -67,7 +67,9 @@
                                     <span class="flash-item sale-label">sale</span>
                                 </div>
                                 <div class="wrap-btn">
-                                    <a href="#" class="function-link">quick view</a>
+                                    <a
+                                        href="{{ route('product.details', ['slug' => $sproduct->slug]) }}"class="function-link">quick
+                                        view</a>
                                 </div>
                             </div>
                             <div class="product-info">
@@ -111,12 +113,6 @@
                                                         alt="T-Shirt Raw Hem Organic Boro Constrast Denim">
                                                 </figure>
                                             </a>
-                                            {{-- <div class="group-flash">
-                                            <span class="flash-item new-label">new</span>
-                                        </div>
-                                        <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
-                                        </div> --}}
                                         </div>
                                         <div class="product-info">
                                             <a

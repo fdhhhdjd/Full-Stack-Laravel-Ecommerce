@@ -22,8 +22,11 @@ class HomeComponent extends Component
             $lproducts = Products::orderBy('created_at', 'DESC')->get()->take(8);
             SetCache('lproducts', $lproducts);
         }
-        $sliders = HomeSlider::where('status', 1)->get();
-
+        $sliders = GetCache('lsliders');
+        if (is_null($sliders)) {
+            $sliders = HomeSlider::where('status', 1)->get();
+            SetCache('lsliders', $sliders);
+        }
         // dd($lproducts);
         //Show Latest Products On Homepage
         // $lproducts = Products::orderBy('created_at', 'DESC')->get()->take(8);
@@ -38,7 +41,7 @@ class HomeComponent extends Component
 
         if (Auth::check()) {
             Cart::instance('cart')->restore(Auth::user()->email);
-            Cart::instance('wishlist')->restore(Auth::user()->email);
+            // Cart::instance('wishlist')->restore(Auth::user()->email);
         }
         return view('livewire.home-component', ['sliders' => $sliders, 'lproducts' => $lproducts, 'categories' => $categories, 'no_of_products' => $no_of_products, 'sproducts' => $sproducts, 'sale' => $sale])->layout('layouts.base');
     }
