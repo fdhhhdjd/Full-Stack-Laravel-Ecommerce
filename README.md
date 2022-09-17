@@ -10,7 +10,7 @@
 
 ## Code Php,Laravel.
 
-# BackEnd Code By: Nguyễn Tiến Tài
+# Code By: Nguyễn Tiến Tài
 
 ## WebSite: Chưa có cần có phí 😄😄.
 
