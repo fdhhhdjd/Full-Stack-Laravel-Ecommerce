@@ -12,9 +12,9 @@
 
 # BackEnd Code By: Nguyễn Tiến Tài
 
-## WebSite: Chưa có.
+## WebSite: Chưa có cần có phí 😄😄.
 
-## Luyện tập để Code Php,Laravel.
+## Code Php,Laravel.
 
 ## Tài Khoản Donate li Cf để có động lực code cho anh em tham khảo 😄😄
 
